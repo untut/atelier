@@ -51,42 +51,48 @@ switch (this.dataset.title) {
     });
 
 
-    /* ===== ОТЗЫВЫ-ПАПКИ ===== */
+/* ===== ОТЗЫВЫ — МОБИЛЬНАЯ КАРТОТЕКА ===== */
 
- const folders = document.querySelectorAll(".review-card");
+const folders = document.querySelectorAll(".review-card");
 
-function layout(activeIndex) {
+function setActive(index) {
+    folders.forEach((card, i) => {
 
-    folders.forEach((folder, index) => {
+        card.classList.remove("active");
 
-        folder.classList.remove("active");
-
-        if (index === activeIndex) {
-
-            folder.style.transform =
-                "translateX(0px) translateY(-18px) rotate(0deg) scale(1.02)";
-
-            folder.style.zIndex = 100;
-
-            folder.classList.add("active");
-
-        } else {
-
-            const offset = index < activeIndex ? -110 : 110;
-
-            const rotate = index < activeIndex ? -4 : 4;
-
-            folder.style.transform =
-                `translateX(${offset}px) rotate(${rotate}deg)`;
-
-            folder.style.zIndex =
-                10 - Math.abs(index - activeIndex);
-
+        // активная карточка
+        if (i === index) {
+            card.style.transform = "translateY(0px) scale(1.03)";
+            card.style.zIndex = 10;
+            card.classList.add("active");
         }
 
-    });
+        // карточки позади
+        else {
+            const offset = (i - index) * 18;
 
+            card.style.transform = `
+                translateY(${offset}px)
+                scale(${i < index ? 0.95 : 0.97})
+            `;
+
+            card.style.zIndex = 10 - Math.abs(i - index);
+        }
+    });
 }
+
+// старт — первая карточка активна
+setActive(0);
+
+// клик по карточке переключает активную
+folders.forEach((card, i) => {
+    card.addEventListener("click", () => {
+        setActive(i);
+    });
+});
+
+
+
 
 layout(0);
 
@@ -100,3 +106,4 @@ folders.forEach((folder, index) => {
 
 });
 });
+
