@@ -106,4 +106,3 @@ folders.forEach((folder, index) => {
 
 });
 });
-
