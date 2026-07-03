@@ -53,66 +53,45 @@ switch (this.dataset.title) {
 
 /* ===== ОТЗЫВЫ — МОБИЛЬНАЯ КАРТОТЕКА ===== */
 
+const folders = document.querySelectorAll(".review-card");
 
-const cards = document.querySelectorAll(".review-card");
+function setActive(activeIndex) {
 
-function update(activeIndex) {
-
-    cards.forEach((card, i) => {
+    folders.forEach((card, i) => {
 
         card.classList.remove("active");
 
-        const offset = (i - activeIndex);
+        const diff = i - activeIndex;
 
         // активная карточка
-        if (i === activeIndex) {
-            card.style.transform = "translateX(0) scale(1)";
-            card.style.zIndex = 100;
+        if (diff === 0) {
+            card.style.transform = "translateY(0px) scale(1.03)";
+            card.style.zIndex = 10;
+            card.style.opacity = "1";
             card.classList.add("active");
         }
 
-        // карточки справа (ПРИПРЯТАНЫ)
-        else if (i > activeIndex) {
-            card.style.transform = `
-                translateX(${120 + (i - activeIndex) * 18}px)
-                scale(0.96)
-            `;
-            card.style.zIndex = 50 - i;
-        }
-
-        // карточки слева (уходят назад)
+        // карточки позади / впереди
         else {
-            card.style.transform = `
-                translateX(${-140 - (activeIndex - i) * 20}px)
-                scale(0.92)
-            `;
-            card.style.zIndex = 10 - i;
+            const y = diff * 28; // вертикальный сдвиг стопки
+            const scale = 1 - Math.abs(diff) * 0.03;
+
+            card.style.transform = `translateY(${y}px) scale(${scale})`;
+
+            card.style.zIndex = 10 - Math.abs(diff);
+
+            // важно: они ВСЕ видимы
+            card.style.opacity = diff > 2 || diff < -2 ? "0.6" : "1";
         }
     });
 }
 
-let current = 0;
-update(current);
+// старт
+setActive(0);
 
-cards.forEach((card, i) => {
+// клик переключает
+folders.forEach((card, i) => {
     card.addEventListener("click", () => {
-        current = i;
-        update(current);
+        setActive(i);
     });
-});
-
-
-
-
-layout(0);
-
-folders.forEach((folder, index) => {
-
-    folder.addEventListener("click", () => {
-
-        layout(index);
-
-    });
-
-});
 });
