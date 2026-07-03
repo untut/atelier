@@ -53,41 +53,51 @@ switch (this.dataset.title) {
 
 /* ===== ОТЗЫВЫ — МОБИЛЬНАЯ КАРТОТЕКА ===== */
 
-const folders = document.querySelectorAll(".review-card");
 
-function setActive(index) {
-    folders.forEach((card, i) => {
+const cards = document.querySelectorAll(".review-card");
+
+function update(activeIndex) {
+
+    cards.forEach((card, i) => {
 
         card.classList.remove("active");
 
+        const offset = (i - activeIndex);
+
         // активная карточка
-        if (i === index) {
-            card.style.transform = "translateY(0px) scale(1.03)";
-            card.style.zIndex = 10;
+        if (i === activeIndex) {
+            card.style.transform = "translateX(0) scale(1)";
+            card.style.zIndex = 100;
             card.classList.add("active");
         }
 
-        // карточки позади
-        else {
-            const offset = (i - index) * 18;
-
+        // карточки справа (ПРИПРЯТАНЫ)
+        else if (i > activeIndex) {
             card.style.transform = `
-                translateY(${offset}px)
-                scale(${i < index ? 0.95 : 0.97})
+                translateX(${120 + (i - activeIndex) * 18}px)
+                scale(0.96)
             `;
+            card.style.zIndex = 50 - i;
+        }
 
-            card.style.zIndex = 10 - Math.abs(i - index);
+        // карточки слева (уходят назад)
+        else {
+            card.style.transform = `
+                translateX(${-140 - (activeIndex - i) * 20}px)
+                scale(0.92)
+            `;
+            card.style.zIndex = 10 - i;
         }
     });
 }
 
-// старт — первая карточка активна
-setActive(0);
+let current = 0;
+update(current);
 
-// клик по карточке переключает активную
-folders.forEach((card, i) => {
+cards.forEach((card, i) => {
     card.addEventListener("click", () => {
-        setActive(i);
+        current = i;
+        update(current);
     });
 });
 
