@@ -1,0 +1,1375 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #f3efea;
+    font-family: 'Inter', sans-serif;
+    color: #2d2d2d;
+    overflow-x: hidden;
+}
+
+/* =========================
+   ФОН 
+========================= */
+
+/* бумажная текстура */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+        radial-gradient(rgba(0,0,0,0.02) 1px, transparent 1px);
+    background-size: 3px 3px, 7px 7px;
+    opacity: 0.28;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* лёгкая виньетка */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(
+        circle at center,
+        transparent 60%,
+        rgba(0,0,0,0.08)
+    );
+    z-index: 0;
+}
+
+/* контейнер */
+.container {
+    width: min(1200px, 90%);
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero{
+    position:relative;
+    overflow:hidden;
+    min-height:550px;
+
+    display:flex;
+    align-items:center;
+
+    padding:70px 0;
+}
+
+/* фотография */
+
+.hero-photo{
+
+    position:absolute;
+
+    top:0;
+    right:0;
+    bottom:0;
+
+    width:58%;
+
+    background:url("nitki.jpg") center center/cover no-repeat;
+
+    z-index:1;
+
+    /* красивое растворение */
+    -webkit-mask-image:linear-gradient(
+        to left,
+        rgba(0,0,0,1) 58%,
+        rgba(0,0,0,.75) 72%,
+        rgba(0,0,0,.25) 88%,
+        transparent 100%
+    );
+
+    mask-image:linear-gradient(
+        to left,
+        rgba(0,0,0,1) 58%,
+        rgba(0,0,0,.75) 72%,
+        rgba(0,0,0,.25) 88%,
+        transparent 100%
+    );
+}
+
+/* лёгкое затемнение */
+
+.hero-photo::after{
+
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:linear-gradient(
+        to bottom,
+        rgba(0,0,0,.05),
+        rgba(0,0,0,.15)
+    );
+}
+
+.hero .container{
+
+    position:relative;
+    z-index:5;
+}
+
+.hero-content{
+
+    width:560px;
+}
+
+/* логотип */
+
+.logo{
+
+    margin-bottom:25px;
+}
+
+.logo img{
+
+    width:90px;
+}
+
+/* заголовок */
+
+.hero h1{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:72px;
+
+    line-height:.95;
+
+    margin-bottom:28px;
+
+    color:#2d2d2d;
+}
+
+/* описание */
+
+.hero p{
+
+    font-size:19px;
+
+    line-height:1.8;
+
+    color:#555;
+
+    margin-bottom:35px;
+}
+
+/* контакты */
+
+.contacts{
+
+    margin-top:30px;
+
+    line-height:2;
+
+    color:#555;
+}
+
+.contacts a{
+
+    color:inherit;
+
+    text-decoration:none;
+}
+
+/* ===========================
+   МОБИЛЬНАЯ ВЕРСИЯ
+=========================== */
+
+@media (max-width:900px){
+
+.hero{
+
+    min-height:auto;
+
+    padding:50px 0;
+}
+
+.hero-photo{
+
+    width:100%;
+
+    opacity:.18;
+
+    mask-image:none;
+
+    -webkit-mask-image:none;
+}
+
+.hero-content{
+
+    width:100%;
+}
+
+.hero h1{
+
+    font-size:52px;
+}
+
+}
+
+/* =========================
+   ПРАВАЯ КАРТИНКА (УМЕНЬШЕНА)
+========================= */
+
+.hero-image {
+    position: relative;
+
+    height: 420px; /* ВАЖНО: не 80vh */
+    width: 100%;
+
+    border-radius: 12px;
+    overflow: hidden;
+
+    background-image: url("nitki.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+/* РАССЕИВАНИЕ ТОЛЬКО В СТОРОНУ ТЕКСТА */
+.hero-image::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+        to left,
+        rgba(243,239,234,0) 0%, /* чистое фото справа */
+        rgba(243,239,234,0.2) 40%,
+        rgba(243,239,234,0.7) 70%,
+        rgba(243,239,234,1) 100% /* текстовая зона */
+    );
+}
+
+/* ===== SERVICES ===== */
+.services {
+    padding: 30px 0 60px;
+}
+
+.section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.services-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+/* ===== КАРТОЧКА-БИРКА (исправленная) ===== */
+/* ===== КАРТОЧКА-БИРКА ===== */
+
+.service-tag{
+    position:relative;
+    width:190px;
+    height:110px;
+    cursor:pointer;
+    transition:.25s;
+    user-select:none;
+}
+
+/* фон */
+.tag-shape{
+    position:absolute;
+    inset:0;
+    background:#f7f1e6;
+    clip-path:polygon(0 0,85% 0,100% 50%,85% 100%,0 100%);
+    transition:.25s;
+}
+
+/* рамка */
+.border-svg{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    z-index:2;
+    opacity:.35;
+    pointer-events:none;
+    transition:.25s;
+}
+
+.border-svg path{
+    fill:none;
+    stroke:rgba(110,85,65,.45);
+    stroke-width:2;
+    stroke-dasharray:7 7;
+    vector-effect:non-scaling-stroke;
+}
+
+/* текст */
+.service-tag span{
+    position:relative;
+    z-index:4;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100%;
+    padding:20px;
+    color:#4d4035;
+    text-align:center;
+    transition:.25s;
+}
+
+/* отверстие */
+.tag-hole{
+    position:absolute;
+    right:18px;
+    top:50%;
+    transform:translateY(-50%);
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    background:#f3efea;
+    border:1px solid rgba(80,60,40,.15);
+    z-index:5;
+    transition:.25s;
+}
+
+/* ===== АКТИВНАЯ БИРКА ===== */
+
+.service-tag.active-service .tag-shape{
+    background:#8f5346;
+}
+
+.service-tag.active-service span{
+    color:rgba(255,255,255,.92);
+}
+
+.service-tag.active-service .border-svg{
+    opacity:1;
+}
+
+.service-tag.active-service .border-svg path{
+    stroke:rgba(255,255,255,.6);
+}
+
+.service-tag.active-service .tag-hole{
+    border-color:rgba(255,255,255,.35);
+}
+
+/* hover */
+
+.service-tag:hover{
+    transform:translateY(-3px);
+}
+
+/* ===== WORKS ===== */
+/* ===== WORKS (ОБНОВЛЕННЫЙ СТИЛЬНЫЙ ФОН) ===== */
+/* ===== WORKS (СОЧНЫЙ ШОКОЛАДНО-ОСЕННИЙ ФОН) ===== */
+/* ===== WORKS (ПРОЯВЛЕННЫЕ ТЕКСТУРЫ КОЖИ И ТКАНИ) ===== */
+.works {
+    position: relative;
+    overflow: hidden;
+    /* Смягчаем фон до оттенка теплого молочного шоколада, чтобы тени на фото не чернели */
+    background: #3d3128; 
+    padding: 100px 0;
+}
+
+.works::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    
+    /* Идеальный баланс: текстура отлично видна, но не слепит глаза */
+    opacity: 0.45; 
+    
+    /* Усиливаем контраст и резкость, чтобы поры кожи и волокна ткани «выпуклились» */
+    filter: contrast(125%) brightness(95%) sepia(25%); 
+    
+    /* Убираем жесткое смешивание, оставляя чистое наложение на благородный фон */
+    mix-blend-mode: normal; 
+    
+    transition: opacity 0.4s ease;
+}
+
+/* При наведении текстура становится еще более рельефной и осязаемой */
+.works:hover::before {
+    opacity: 0.52;
+}
+
+
+.works .container {
+    position: relative;
+    z-index: 2;
+}
+
+.works-title {
+    color: #fff;
+    text-align: center;
+    font-size: 42px;
+    margin-bottom: 60px;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.work-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    max-width: 800px;
+    margin: auto;
+}
+
+@media (max-width: 768px) {
+    .work-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.work-card {
+    position: relative;
+}
+
+.work-card::after {
+    content: '';
+    position: absolute;
+    inset: -15px;
+    border: 2px dashed rgba(255, 255, 255, 0.3);
+}
+
+.work-image {
+    height: 220px;
+    background: #cfcfcf;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ===== REVIEWS ===== */
+
+.reviews{
+    padding:80px 0 50px;
+}
+
+.review-stack{
+    position:relative;
+    width:760px;
+    height:420px;
+    margin:auto;
+}
+
+/* ПАПКА */
+
+.review-card{
+
+    position:absolute;
+
+    width:620px;
+    height:340px;
+
+    background:#d7c29d;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    transition:.35s ease;
+
+    box-shadow:0 18px 35px rgba(0,0,0,.15);
+}
+
+/* вкладка */
+
+.folder-tab{
+
+    position:absolute;
+
+    top:-34px;
+    left:24px;
+
+    height:34px;
+
+    padding:0 24px;
+
+    display:flex;
+    align-items:center;
+
+    background:#c6ab82;
+
+    border-radius:10px 10px 0 0;
+
+    font-weight:600;
+    font-size:15px;
+
+    color:#3d3024;
+}
+
+/* лист бумаги */
+
+.paper{
+
+    position:absolute;
+
+    left:14px;
+    right:14px;
+    top:18px;
+    bottom:14px;
+
+    background:#f6f3ee;
+
+    border-radius:6px;
+
+    padding:30px;
+
+    display:flex;
+    flex-direction:column;
+}
+
+/* расположение */
+
+.review-card:nth-child(1){
+
+    top:0;
+    left:0;
+
+    z-index:3;
+}
+
+.review-card:nth-child(2){
+
+    top:38px;
+    left:60px;
+
+    transform:rotate(-2deg);
+
+    z-index:2;
+}
+
+.review-card:nth-child(3){
+
+    top:76px;
+    left:120px;
+
+    transform:rotate(2deg);
+
+    z-index:1;
+}
+
+/* hover */
+
+.review-card:hover{
+
+    transform:translateY(-10px);
+}
+
+.review-card:nth-child(2):hover{
+
+    transform:translateY(-10px) rotate(-2deg);
+}
+
+.review-card:nth-child(3):hover{
+
+    transform:translateY(-10px) rotate(2deg);
+}
+
+/* штамп */
+
+.stamp{
+
+    position:absolute;
+
+    right:24px;
+    top:20px;
+
+    border:3px solid #a34848;
+
+    color:#a34848;
+
+    padding:8px 18px;
+
+    font-weight:700;
+
+    transform:rotate(-11deg);
+}
+
+/* имя */
+
+.paper h3{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:34px;
+
+    margin-bottom:6px;
+}
+
+/* дата */
+
+.review-date{
+
+    color:#8f5346;
+
+    font-size:14px;
+
+    margin-bottom:18px;
+}
+
+/* текст */
+
+.paper p{
+
+    color:#555;
+
+    line-height:1.7;
+
+    flex:1;
+}
+
+/* фото */
+
+.review-images{
+
+    display:flex;
+
+    gap:14px;
+
+    margin-top:18px;
+}
+
+.review-photo{
+
+    width:150px;
+    height:95px;
+
+    background:#ddd;
+
+    border:6px solid white;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-weight:600;
+
+    box-shadow:0 4px 10px rgba(0,0,0,.12);
+}
+
+/* ===== FOOTER ===== */
+/* ===== FOOTER ===== */
+
+footer{
+    position:relative;
+    background:#8f5346;
+    color:#fff;
+    padding:90px 0 35px;
+    overflow:hidden;
+}
+
+/* декоративная линия сверху */
+
+footer::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:min(1100px,90%);
+    height:1px;
+    background:linear-gradient(
+        to right,
+        transparent,
+        rgba(255,255,255,.25),
+        rgba(255,255,255,.6),
+        rgba(255,255,255,.25),
+        transparent
+    );
+}
+
+footer::after{
+    content:"✦";
+    position:absolute;
+    top:-11px;
+    left:50%;
+    transform:translateX(-50%);
+    color:#d8bc8b;
+    font-size:18px;
+    background:#8f5346;
+    padding:0 12px;
+}
+
+/* декоративная надпись */
+
+.footer-brand{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:18px;
+    margin-bottom:45px;
+}
+
+.footer-brand .line{
+    flex:1;
+    max-width:120px;
+    height:1px;
+    background:rgba(255,255,255,.18);
+}
+
+.footer-brand .brand-text{
+    font-family:"Cormorant Garamond",serif;
+    font-size:18px;
+    letter-spacing:2px;
+    color:rgba(255,255,255,.92);
+    text-transform:uppercase;
+}
+
+/* колонки */
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:50px;
+}
+
+.footer-title{
+    font-family:"Cormorant Garamond",serif;
+    font-size:30px;
+    margin-bottom:18px;
+}
+
+.footer-links{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.footer-grid div{
+    line-height:1.9;
+}
+
+footer a{
+    color:rgba(255,255,255,.9);
+    text-decoration:none;
+    transition:.25s;
+}
+
+footer a:hover{
+    color:#f6e3bf;
+    padding-left:4px;
+}
+
+/* подпись */
+
+.footer-bottom{
+    margin-top:45px;
+    padding-top:20px;
+    border-top:1px solid rgba(255,255,255,.15);
+    text-align:center;
+    color:rgba(255,255,255,.65);
+    font-size:14px;
+}
+
+/* ===== ПОЧЕМУ ВЫБИРАЮТ НАС ===== */
+/* =========================
+   ADVANTAGES (ПОЧЕМУ ВЫБИРАЮТ НАС)
+   — единственный переработанный блок
+========================= */
+
+.advantages {
+    padding: 60px 0 100px;
+}
+
+.advantages-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 35px;
+}
+
+.advantage-card {
+    position: relative;
+    padding: 55px 35px 35px;
+    background: #f7f1e6;
+    border: 1px solid rgba(80,60,40,0.25);
+    border-radius: 6px 8px 7px 5px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: 0.3s ease;
+}
+
+/* внутренняя "старинная рамка" */
+.advantage-card::before {
+    content: "";
+    position: absolute;
+    inset: 6px;
+    border: 1px dashed rgba(80,60,40,0.25);
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+/* номер как штамп */
+.advantage-card::after {
+    content: attr(data-number);
+    position: absolute;
+    top: -18px;
+    left: 18px;
+    background: #c8a97d;
+    color: #2d2d2d;
+    padding: 6px 14px;
+    font-weight: 700;
+    border-radius: 4px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* заголовок */
+.advantage-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+/* текст */
+.advantage-card p {
+    color: #5a4a3f;
+    line-height: 1.7;
+}
+
+/* лёгкий “ручной” hover */
+.advantage-card:hover {
+    transform: translateY(-6px) rotate(-0.2deg);
+}
+
+/* ===== КОНСУЛЬТАЦИЯ (ПЕРЕСТИЛЬ ПОД АТЕЛЬЕ) ===== */
+
+.consultation {
+    padding: 80px 0 100px;
+}
+
+/* лист/карточка как архивный документ */
+.consultation-card {
+    position: relative;
+    background: #f7f1e6;
+    padding: 90px 50px 60px;
+    max-width: 900px;
+    margin: auto;
+
+    border: 1px solid rgba(80,60,40,0.25);
+    border-radius: 6px 8px 7px 5px;
+
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+}
+
+/* внутренняя рамка как на “папках” */
+.consultation-card::after {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border: 1px dashed rgba(80,60,40,0.25);
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+/* бирка сверху (как у заказов) */
+.consultation-card::before {
+    content: "КОНСУЛЬТАЦИЯ";
+    position: absolute;
+    top: -18px;
+    left: 25px;
+
+    background: #c8a97d;
+    color: #2d2d2d;
+
+    padding: 8px 18px;
+    font-weight: 700;
+    font-size: 14px;
+
+    border-radius: 4px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+}
+
+/* заголовок */
+.consultation-card h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 44px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* текст */
+.consultation-card p {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto 35px;
+    line-height: 1.8;
+    color: #5a4a3f;
+}
+
+/* кнопки */
+.consultation-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* WhatsApp делаем “вторичной бумажной” */
+.whatsapp-btn {
+    background: #f3efea;
+    color: #8f5346;
+    border: 1px solid rgba(143,83,70,0.4);
+}
+
+.whatsapp-btn:hover {
+    background: #fff;
+}
+
+
+/* ===== АДАПТИВ ===== */
+
+@media (max-width: 900px) {
+
+    .advantages-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .consultation-card {
+        padding: 40px 25px;
+    }
+
+    .consultation-card h2 {
+        font-size: 38px;
+    }
+
+}
+
+
+
+
+
+.works.auto::before {
+    background-image: url("koja.jpg");
+}
+
+.works.furniture::before {
+    background-image: url("mebel.jpg");
+}
+
+.works.atelier::before {
+    background-image: url("atele.jpg");
+}
+
+.works.sewing::before {
+    background-image: url("shvenoe.jpg");
+}
+
+.works.foam::before {
+    background-image: url("porolon.jpg");
+}
+
+
+
+
+
+/* =========================================
+   КНОПКИ ДЛЯ КОНСУЛЬТАЦИИ (ИСПРАВЛЕННЫЕ)
+========================================= */
+
+/* =========================================
+   ИСПРАВЛЕННЫЕ КНОПКИ (УНИВЕРСАЛЬНЫЕ)
+========================================= */
+
+/* 1. Сбрасываем синий цвет для ВСЕХ кнопок-ссылок на сайте */
+.hero .btn,
+.consultation-buttons a,
+.consultation-buttons button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    
+    padding: 16px 36px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-decoration: none; /* Убирает подчеркивание */
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+/* 2. Главные кнопки красного оттенка (в Hero и в Консультации) */
+.hero .btn,
+.consultation-buttons .cta-btn {
+    background: #8f5346;
+    color: #ffffff !important; /* Намертво убирает синий цвет */
+    border: 1px solid #8f5346;
+    box-shadow: 0 4px 12px rgba(143, 83, 70, 0.25);
+}
+
+/* Эффект наведения для красных кнопок */
+.hero .btn:hover,
+.consultation-buttons .cta-btn:hover {
+    background: #7a4338;
+    border-color: #7a4338;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(143, 83, 70, 0.35);
+}
+
+/* 3. Бумажная кнопка WhatsApp с красной рамкой */
+.consultation-buttons .whatsapp-btn {
+    background: #f3efea;
+    color: #8f5346 !important; /* Текст становится красным вместо синего */
+    border: 1px solid rgba(143, 83, 70, 0.4);
+    box-shadow: 0 4px 12px rgba(143, 83, 70, 0.08);
+}
+
+/* Эффект наведения для WhatsApp */
+.consultation-buttons .whatsapp-btn:hover {
+    background: #ffffff;
+    color: #7a4338 !important;
+    border-color: rgba(143, 83, 70, 0.8);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(143, 83, 70, 0.15);
+}
+
+/* Общий эффект при клике (нажатии) */
+.hero .btn:active,
+.consultation-buttons a:active {
+    transform: translateY(0);
+}
+
+
+
+
+/* Делаем ссылку «Позвонить» внизу сайта аккуратным темным текстом */
+.consultation-buttons a[href^="tel:"],
+.consultation a[href^="tel:"] {
+    /* Сбрасываем свойства кнопки, если они были */
+    display: inline-block;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    transform: none !important;
+    
+    /* Задаем красивый темный цвет и шрифты */
+    color: #2d2d2d !important; /* Тот самый темный цвет, как у всего боди */
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none; /* Убираем синее подчеркивание */
+    
+    transition: color 0.25s ease;
+    cursor: pointer;
+}
+
+/* При наведении текст будет красиво и плавно становиться красно-коричневым */
+.consultation-buttons a[href^="tel:"]:hover,
+.consultation a[href^="tel:"]:hover {
+    color: #8f5346 !important; 
+    text-decoration: underline; /* Появится аккуратная линия при наведении */
+    background: none !important;
+}
+
+
+/* Выравниваем и центрируем все элементы внутри блока кнопок */
+.consultation-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Выравнивает текст и кнопку строго по одной горизонтальной линии */
+    gap: 30px; /* Расстояние между надписью и кнопкой WhatsApp */
+    flex-wrap: wrap; /* Чтобы на смартфонах они аккуратно переносились */
+    width: 100%;
+}
+
+
+
+
+
+/* =========================================
+   MOBILE 768px
+========================================= */
+
+@media (max-width:768px){
+
+.container{
+    width:92%;
+}
+
+/* HERO */
+
+.hero{
+    padding:50px 0;
+    text-align:center;
+}
+
+.hero-photo{
+    width:100%;
+    opacity:.12;
+}
+
+.logo img{
+    width:70px;
+}
+
+.hero-content{
+    width:100%;
+}
+
+.hero h1{
+    font-size:44px;
+    line-height:1;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:17px;
+    line-height:1.7;
+}
+
+.contacts{
+    font-size:15px;
+}
+
+/* Заголовки */
+
+.section-title,
+.works-title{
+    font-size:34px;
+}
+
+/* SERVICES */
+
+.services-row{
+    gap:15px;
+}
+
+.service-tag{
+    width:100%;
+    max-width:320px;
+    height:85px;
+}
+
+/* WORKS */
+
+.works{
+    padding:70px 0;
+}
+
+.work-grid{
+    gap:25px;
+}
+
+.work-image{
+    height:220px;
+}
+
+/* REVIEWS */
+
+.review-stack{
+    width:100%;
+    height:auto;
+    display:flex;
+    flex-direction:column;
+    gap:25px;
+}
+
+.review-card{
+    position:relative;
+    width:100%;
+    height:auto;
+
+    top:auto!important;
+    left:auto!important;
+    transform:none!important;
+}
+
+.review-card:hover{
+    transform:none!important;
+}
+
+.folder-tab{
+    font-size:14px;
+}
+
+.paper{
+    position:relative;
+    inset:auto;
+    margin:18px;
+    padding:25px;
+}
+
+.paper h3{
+    font-size:28px;
+}
+
+.review-images{
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.review-photo{
+    width:calc(50% - 8px);
+    height:110px;
+}
+
+/* ADVANTAGES */
+
+.advantages{
+    padding:60px 0;
+}
+
+.advantages-grid{
+    grid-template-columns:1fr;
+}
+
+.advantage-card{
+    padding:45px 25px 25px;
+}
+
+.advantage-card h3{
+    font-size:24px;
+}
+
+/* CONSULTATION */
+
+.consultation{
+    padding:70px 0;
+}
+
+.consultation-card{
+    padding:55px 20px 35px;
+}
+
+.consultation-card::before{
+    left:15px;
+    font-size:12px;
+}
+
+.consultation-card h2{
+    font-size:32px;
+}
+
+.consultation-card p{
+    font-size:16px;
+}
+
+.consultation-buttons{
+    flex-direction:column;
+    gap:18px;
+}
+
+.consultation-buttons a{
+    width:100%;
+    max-width:320px;
+}
+
+/* FOOTER */
+
+.footer-grid{
+    grid-template-columns:1fr;
+    gap:35px;
+    text-align:center;
+}
+
+.footer-brand{
+    margin-bottom:35px;
+}
+
+.footer-brand .line{
+    display:none;
+}
+
+.footer-title{
+    font-size:26px;
+}
+
+.footer-links{
+    align-items:center;
+}
+
+}
+
+/* =========================================
+   MOBILE 480px
+========================================= */
+
+@media (max-width:480px){
+
+.hero{
+    padding:40px 0;
+}
+
+.hero h1{
+    font-size:34px;
+}
+
+.hero p{
+    font-size:16px;
+}
+
+.logo img{
+    width:60px;
+}
+
+.section-title,
+.works-title{
+    font-size:30px;
+}
+
+.service-tag{
+    height:75px;
+}
+
+.service-tag span{
+    font-size:15px;
+}
+
+.work-image{
+    height:190px;
+}
+
+.paper{
+    padding:20px;
+}
+
+.paper h3{
+    font-size:24px;
+}
+
+.review-photo{
+    width:100%;
+    height:170px;
+}
+
+.consultation-card h2{
+    font-size:28px;
+}
+
+.hero .btn,
+.consultation-buttons a{
+    width:100%;
+}
+
+footer{
+    padding:70px 0 30px;
+}
+
+.footer-bottom{
+    font-size:13px;
+}
+
+}
+
