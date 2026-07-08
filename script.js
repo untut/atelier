@@ -38,6 +38,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.getElementById(`work${i}`).src = `images/${folder}/${i}.jpg`;
             }
 
+            // Плавно показываем блок с работами
+setTimeout(() => {
+
+    const y = worksSection.offsetTop - 20;
+
+    window.scrollTo({
+        top: y,
+        behavior: "smooth"
+    });
+
+}, 300);
+
         });
 
     });
