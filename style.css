@@ -1410,3 +1410,207 @@ footer{
 }
 
 }
+
+/* =========================================
+   MOBILE FIX
+   ADVANTAGES + CONSULTATION + FOOTER
+========================================= */
+
+@media (max-width:768px){
+
+/* ===========================
+   Почему выбирают нас
+=========================== */
+
+.advantages{
+
+    padding:55px 0;
+}
+
+.advantages-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr;
+
+    gap:18px;
+}
+
+.advantage-card{
+
+    width:100%;
+
+    padding:48px 20px 22px;
+
+    min-height:auto;
+}
+
+.advantage-card::after{
+
+    top:-14px;
+    left:16px;
+
+    padding:5px 12px;
+
+    font-size:14px;
+}
+
+.advantage-card h3{
+
+    font-size:26px;
+
+    line-height:1.15;
+
+    text-align:center;
+
+    margin-bottom:12px;
+}
+
+.advantage-card p{
+
+    text-align:center;
+
+    font-size:15px;
+
+    line-height:1.65;
+}
+
+/* ===========================
+   Консультация
+=========================== */
+
+.consultation{
+
+    padding:55px 0 65px;
+}
+
+.consultation-card{
+
+    padding:60px 22px 28px;
+
+    border-radius:8px;
+}
+
+.consultation-card::before{
+
+    left:50%;
+
+    transform:translateX(-50%);
+}
+
+.consultation-card h2{
+
+    font-size:34px;
+
+    line-height:1;
+
+    text-align:center;
+}
+
+.consultation-card p{
+
+    font-size:15px;
+
+    line-height:1.7;
+
+    margin-bottom:26px;
+}
+
+.consultation-buttons{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:12px;
+}
+
+.consultation-buttons .btn{
+
+    width:100%;
+
+    max-width:260px;
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+
+footer{
+
+    padding:45px 0 20px;
+}
+
+.footer-brand{
+
+    margin-bottom:28px;
+
+    gap:10px;
+}
+
+.footer-brand .line{
+
+    max-width:45px;
+}
+
+.footer-brand .brand-text{
+
+    font-size:13px;
+
+    line-height:1.4;
+
+    text-align:center;
+
+    letter-spacing:1px;
+}
+
+.footer-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr;
+
+    gap:26px;
+
+    text-align:center;
+}
+
+.footer-grid>div{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+}
+
+.footer-title{
+
+    font-size:26px;
+
+    margin-bottom:10px;
+}
+
+.footer-grid a{
+
+    word-break:break-word;
+}
+
+.footer-bottom{
+
+    margin-top:28px;
+
+    padding-top:16px;
+
+    font-size:12px;
+
+    line-height:1.6;
+
+    text-align:center;
+}
+
+}
