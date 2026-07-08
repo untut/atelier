@@ -1,49 +1,41 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
 
-    /* ===== БИРКИ УСЛУГ ===== */
+    /* =========================
+       УСЛУГИ → WORKS
+    ========================= */
 
-    const services = document.querySelectorAll('.service-tag');
-    const worksTitle = document.getElementById('worksTitle');
-    const worksSection = document.querySelector('.works');
+    const services = document.querySelectorAll(".service-tag");
+    const worksTitle = document.getElementById("worksTitle");
+    const worksSection = document.querySelector(".works");
 
-    services.forEach((service) => {
+    const backgrounds = ["auto", "furniture", "atelier", "sewing", "foam"];
 
-        service.addEventListener('click', function () {
+    const worksFolders = {
+        auto: "car",
+        furniture: "furniture",
+        atelier: "atelier",
+        sewing: "machine",
+        foam: "foam"
+    };
 
-            services.forEach((item) => {
-                item.classList.remove('active-service');
-            });
+    services.forEach(service => {
 
-            this.classList.add('active-service');
+        service.addEventListener("click", function () {
 
-            worksSection.className = 'works';
+            services.forEach(item => item.classList.remove("active-service"));
+            this.classList.add("active-service");
 
-switch (this.dataset.title) {
-
-    case 'Автомобильные салоны':
-        worksSection.classList.add('auto');
-        break;
-
-    case 'Мебель':
-        worksSection.classList.add('furniture');
-        break;
-
-    case 'Ателье':
-        worksSection.classList.add('atelier');
-        break;
-
-    case 'Швейное оборудование':
-        worksSection.classList.add('sewing');
-        break;
-
-    case 'Реставрация поролона':
-        worksSection.classList.add('foam');
-        break;
-}
+            worksSection.classList.remove(...backgrounds);
+            worksSection.classList.add(this.dataset.bg);
 
             if (worksTitle) {
-                worksTitle.textContent =
-                    this.dataset.title || 'Наши работы';
+                worksTitle.textContent = this.dataset.title;
+            }
+
+            const folder = worksFolders[this.dataset.bg];
+
+            for (let i = 1; i <= 6; i++) {
+                document.getElementById(`work${i}`).src = `images/${folder}/${i}.jpg`;
             }
 
         });
@@ -51,47 +43,93 @@ switch (this.dataset.title) {
     });
 
 
-/* ===== ОТЗЫВЫ — МОБИЛЬНАЯ КАРТОТЕКА ===== */
 
-const folders = document.querySelectorAll(".review-card");
+/* =========================
+   REVIEWS
+========================= */
 
-function setActive(activeIndex) {
+const cards = document.querySelectorAll(".review-card");
 
-    folders.forEach((card, i) => {
+let activeIndex = 0;
+
+function renderReviews(index) {
+
+    const mobile = window.innerWidth <= 768;
+
+    if (mobile) {
+
+        const order = [];
+
+        order.push(cards[index]);
+
+        cards.forEach((card, i) => {
+            if (i !== index) order.push(card);
+        });
+
+        order.forEach((card, i) => {
+
+            card.classList.toggle("active", i === 0);
+
+            card.style.transform = `
+                translateY(${i * 50}px)
+                scale(${1 - i * 0.04})
+            `;
+
+            card.style.zIndex = 100 - i;
+            card.style.opacity = "1";
+
+        });
+
+        return;
+    }
+
+    cards.forEach((card, i) => {
+
+        const diff = i - index;
 
         card.classList.remove("active");
 
-        const diff = i - activeIndex;
-
-        // активная карточка
         if (diff === 0) {
+
             card.style.transform = "translateY(0px) scale(1.03)";
-            card.style.zIndex = 10;
+            card.style.zIndex = 20;
             card.style.opacity = "1";
             card.classList.add("active");
-        }
 
-        // карточки позади / впереди
-        else {
-            const y = diff * 28; // вертикальный сдвиг стопки
+        } else {
+
+            const y = diff * 30;
             const scale = 1 - Math.abs(diff) * 0.03;
 
             card.style.transform = `translateY(${y}px) scale(${scale})`;
+            card.style.zIndex = 20 - Math.abs(diff);
+            card.style.opacity = Math.abs(diff) > 2 ? "0.6" : "1";
 
-            card.style.zIndex = 10 - Math.abs(diff);
-
-            // важно: они ВСЕ видимы
-            card.style.opacity = diff > 2 || diff < -2 ? "0.6" : "1";
         }
+
     });
+
 }
 
-// старт
-setActive(0);
+renderReviews(activeIndex);
 
-// клик переключает
-folders.forEach((card, i) => {
+cards.forEach((card, i) => {
+
     card.addEventListener("click", () => {
-        setActive(i);
+
+        activeIndex = i;
+        renderReviews(activeIndex);
+
     });
+
+});
+
+window.addEventListener("resize", () => {
+    renderReviews(activeIndex);
+});
+
+    window.addEventListener("resize", () => {
+        renderReviews(activeIndex);
+    });
+
 });

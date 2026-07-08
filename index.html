@@ -10,6 +10,13 @@
 
     <!-- Подключаем стили -->
     <link rel="stylesheet" href="style.css">
+
+<link rel="preload" href="koja.jpg" as="image">
+<link rel="preload" href="mebel.jpg" as="image">
+<link rel="preload" href="atele.jpg" as="image">
+<link rel="preload" href="shvenoe.jpg" as="image">
+<link rel="preload" href="porolon.jpg" as="image">
+
 </head>
 <body>
 
@@ -17,12 +24,12 @@
 
     <div class="hero-photo"></div>
 
-    <div class="container">
+    <div class="hero-cutout">
 
         <div class="hero-content">
 
             <div class="logo">
-                <img src="логотип.svg" alt="">
+                <img src="логотип.svg" alt="Логотип мастерской">
             </div>
 
             <h1>Мастерская-ателье</h1>
@@ -54,70 +61,114 @@
             <h2 class="section-title">Услуги</h2>
             <div class="services-row">
 
-                <!-- Активная бирка -->
-                <div class="service-tag active-service" data-title="Автомобильные салоны">
-                    <div class="tag-shape"></div>
-                    <!-- SVG-обводка -->
-                    <svg class="border-svg" viewBox="0 0 206 126" preserveAspectRatio="none">
-                        <path d="M 8,8 L 169.5,8 L 198,63 L 169.5,118 L 8,118 Z" />
-                    </svg>
-                    <span>Автомобильные<br>салоны</span>
-                    <div class="tag-hole"></div>
-                </div>
+    <div class="service-tag active-service"
+         data-title="Автомобильные салоны"
+         data-bg="auto">
+        <div class="tag-shape"></div>
+        <svg class="border-svg" viewBox="0 0 206 126" preserveAspectRatio="none">
+            <path d="M 8,8 L 169.5,8 L 198,63 L 169.5,118 L 8,118 Z"/>
+        </svg>
+        <span>Автомобильные<br>салоны</span>
+        <div class="tag-hole"></div>
+    </div>
 
-                <div class="service-tag" data-title="Мебель">
-                    <div class="tag-shape"></div>
-                    <svg class="border-svg" viewBox="0 0 206 126" preserveAspectRatio="none">
-                        <path d="M 8,8 L 169.5,8 L 198,63 L 169.5,118 L 8,118 Z" />
-                    </svg>
-                    <span>Мебель</span>
-                    <div class="tag-hole"></div>
-                </div>
+    <div class="service-tag"
+         data-title="Мебель"
+         data-bg="furniture">
+        <div class="tag-shape"></div>
+        <svg class="border-svg" viewBox="0 0 206 126" preserveAspectRatio="none">
+            <path d="M 8,8 L 169.5,8 L 198,63 L 169.5,118 L 8,118 Z"/>
+        </svg>
+        <span>Мебель</span>
+        <div class="tag-hole"></div>
+    </div>
 
-                <div class="service-tag" data-title="Ателье">
-                    <div class="tag-shape"></div>
-                    <svg class="border-svg" viewBox="0 0 206 126" preserveAspectRatio="none">
-                        <path d="M 8,8 L 169.5,8 L 198,63 L 169.5,118 L 8,118 Z" />
-                    </svg>
-                    <span>Ателье</span>
-                    <div class="tag-hole"></div>
-                </div>
+    <div class="service-tag"
+         data-title="Ателье"
+         data-bg="atelier">
+        <div class="tag-shape"></div>
+        <svg class="border-svg" viewBox="0 0 206 126" preserveAspectRatio="none">
+            <path d="M 8,8 L 169.5,8 L 198,63 L 169.5,118 L 8,118 Z"/>
+        </svg>
+        <span>Ателье</span>
+        <div class="tag-hole"></div>
+    </div>
 
-                <div class="service-tag" data-title="Швейное оборудование">
-                    <div class="tag-shape"></div>
-                    <svg class="border-svg" viewBox="0 0 206 126" preserveAspectRatio="none">
-                        <path d="M 8,8 L 169.5,8 L 198,63 L 169.5,118 L 8,118 Z" />
-                    </svg>
-                    <span>Швейное<br>оборудование</span>
-                    <div class="tag-hole"></div>
-                </div>
+    <div class="service-tag"
+         data-title="Швейное оборудование"
+         data-bg="sewing">
+        <div class="tag-shape"></div>
+        <svg class="border-svg" viewBox="0 0 206 126" preserveAspectRatio="none">
+            <path d="M 8,8 L 169.5,8 L 198,63 L 169.5,118 L 8,118 Z"/>
+        </svg>
+        <span>Швейное<br>оборудование</span>
+        <div class="tag-hole"></div>
+    </div>
 
-                <div class="service-tag" data-title="Реставрация поролона">
-                    <div class="tag-shape"></div>
-                    <svg class="border-svg" viewBox="0 0 206 126" preserveAspectRatio="none">
-                        <path d="M 8,8 L 169.5,8 L 198,63 L 169.5,118 L 8,118 Z" />
-                    </svg>
-                    <span>Реставрация<br>поролона</span>
-                    <div class="tag-hole"></div>
-                </div>
+    <div class="service-tag"
+         data-title="Реставрация поролона"
+         data-bg="foam">
+        <div class="tag-shape"></div>
+        <svg class="border-svg" viewBox="0 0 206 126" preserveAspectRatio="none">
+            <path d="M 8,8 L 169.5,8 L 198,63 L 169.5,118 L 8,118 Z"/>
+        </svg>
+        <span>Реставрация<br>поролона</span>
+        <div class="tag-hole"></div>
+    </div>
 
-            </div>
+</div>
         </div>
     </section>
 
-    <section class="works" id="works">
-        <div class="container">
-            <h2 class="works-title" id="worksTitle">Автомобильные салоны</h2>
-            <div class="work-grid">
-                <div class="work-card"><div class="work-image">ДО</div></div>
-                <div class="work-card"><div class="work-image">ПОСЛЕ</div></div>
-                <div class="work-card"><div class="work-image">ДО</div></div>
-                <div class="work-card"><div class="work-image">ПОСЛЕ</div></div>
-                <div class="work-card"><div class="work-image">ДО</div></div>
-                <div class="work-card"><div class="work-image">ПОСЛЕ</div></div>
+<section class="works auto" id="works">
+    <div class="container">
+
+        <h2 class="works-title" id="worksTitle">
+            Автомобильные салоны
+        </h2>
+
+        <div class="work-grid">
+
+            <div class="work-card">
+                <div class="work-image">
+                    <img id="work1" src="images/car/1.jpg" alt="">
+                </div>
             </div>
+
+            <div class="work-card">
+                <div class="work-image">
+                    <img id="work2" src="images/car/2.jpg" alt="">
+                </div>
+            </div>
+
+            <div class="work-card">
+                <div class="work-image">
+                    <img id="work3" src="images/car/3.jpg" alt="">
+                </div>
+            </div>
+
+            <div class="work-card">
+                <div class="work-image">
+                    <img id="work4" src="images/car/4.jpg" alt="">
+                </div>
+            </div>
+
+            <div class="work-card">
+                <div class="work-image">
+                    <img id="work5" src="images/car/5.jpg" alt="">
+                </div>
+            </div>
+
+            <div class="work-card">
+                <div class="work-image">
+                    <img id="work6" src="images/car/6.jpg" alt="">
+                </div>
+            </div>
+
         </div>
-    </section>
+
+    </div>
+</section>
 
  <section class="reviews" id="reviews">
     <div class="container">
@@ -325,8 +376,6 @@
 </section>
 
 
-
-
 <footer id="contacts">
     <div class="container">
 
@@ -340,26 +389,25 @@
 
         <div class="footer-grid">
 
-            <div>
-                <div class="footer-title">Навигация</div>
-                <div class="footer-links">
-                    <a href="#services">Услуги</a>
-                    <a href="#works">Работы</a>
-                    <a href="#reviews">Отзывы</a>
-                    <a href="#advantages">Почему выбирают нас</a>
-                    <a href="#contacts">Контакты</a>
-                </div>
-            </div>
-
+            <!-- КОНТАКТЫ -->
             <div>
                 <div class="footer-title">Контакты</div>
-                <a href="tel:+79088560453">+7 908 856 04 53</a><br>
-                <a href="mailto:email@example.ru">email@example.ru</a><br>
+
+                <a href="tel:+79088560453">
+                    +7&nbsp;908&nbsp;856&nbsp;04&nbsp;53
+                </a><br>
+
+                <a href="mailto:email@example.ru">
+                    andrejnadangi6610@gmail.com
+                </a><br>
+
                 Надым
             </div>
 
+            <!-- РАЗРАБОТКА -->
             <div>
                 <div class="footer-title">Разработка сайта</div>
+
                 Лендинг / сайты для бизнеса<br>
                 Telegram: @untuttt
             </div>
@@ -367,12 +415,11 @@
         </div>
 
     </div>
+
     <div class="footer-bottom">
-    © 2025 • Мастерская-ателье • Сделано с вниманием к каждой детали
-</div>
-
+        © 2025 • Мастерская-ателье • Сделано с вниманием к каждой детали
+    </div>
 </footer>
-
 
     <script src="script.js"></script>
 </body>
