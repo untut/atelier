@@ -38,6 +38,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.getElementById(`work${i}`).src = `images/${folder}/${i}.jpg`;
             }
 
+            /* =========================
+   PRELOAD WORK IMAGES
+========================= */
+
+Object.values(worksFolders).forEach(folder => {
+
+    for (let i = 1; i <= 6; i++) {
+
+        const img = new Image();
+        img.src = `images/${folder}/${i}.jpg`;
+
+    }
+
+});
+
             // Плавно показываем блок с работами
 setTimeout(() => {
 
