@@ -1096,15 +1096,8 @@ footer{
 }
 
 .paper p{
-
-    font-size:14px;
-    line-height:1.45;
-
-    overflow:hidden;
-
-    display:-webkit-box;
-    -webkit-line-clamp:5;
-    -webkit-box-orient:vertical;
+font-size:14px;
+    line-height:1.55;
 }
 
 .stamp{
@@ -1643,3 +1636,84 @@ footer{
 }
 
 
+/* =========================================
+   IMAGE VIEWER
+========================================= */
+
+.image-viewer{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.88);
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.25s;
+
+    z-index:9999;
+}
+
+.image-viewer.show{
+
+    opacity:1;
+    visibility:visible;
+}
+
+.image-viewer img{
+
+    max-width:92%;
+    max-height:88%;
+
+    border-radius:10px;
+
+    box-shadow:0 20px 60px rgba(0,0,0,.45);
+
+    object-fit:contain;
+}
+
+.viewer-close{
+
+    position:absolute;
+
+    top:18px;
+    right:24px;
+
+    color:white;
+
+    font-size:42px;
+
+    cursor:pointer;
+
+    user-select:none;
+}
+
+.review-photo img{
+
+    cursor:zoom-in;
+
+    transition:.25s;
+}
+
+.review-photo img:hover{
+
+    transform:scale(1.03);
+}
+
+
+.work-image img{
+
+    cursor:zoom-in;
+}
+
+.work-image img:hover{
+
+    transform:scale(1.02);
+}

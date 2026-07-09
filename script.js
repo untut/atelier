@@ -159,4 +159,48 @@ window.addEventListener("resize", () => {
         renderReviews(activeIndex);
     });
 
+    /* =========================
+   IMAGE VIEWER
+========================= */
+
+const viewer = document.getElementById("imageViewer");
+const viewerImage = document.getElementById("viewerImage");
+const viewerClose = document.querySelector(".viewer-close");
+
+/* открываем любые картинки сайта */
+
+document.querySelectorAll(".work-image img, .review-photo img").forEach(img => {
+
+    img.addEventListener("click", () => {
+
+        viewerImage.src = img.src;
+
+        viewer.classList.add("show");
+
+        document.body.style.overflow = "hidden";
+
+    });
+
+});
+
+viewerClose.addEventListener("click", closeViewer);
+
+viewer.addEventListener("click", e => {
+
+    if (e.target === viewer) {
+
+        closeViewer();
+
+    }
+
+});
+
+function closeViewer(){
+
+    viewer.classList.remove("show");
+
+    document.body.style.overflow = "";
+
+}
+
 });
