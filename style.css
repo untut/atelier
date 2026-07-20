@@ -793,7 +793,7 @@ body::after{
 
     width:620px;
 
-    height:340px;
+    height:380px;
 
 
     background:#d7c29d;
@@ -863,28 +863,18 @@ body::after{
 
     position:absolute;
 
-
     left:14px;
-
     right:14px;
-
-
     top:18px;
-
     bottom:14px;
-
 
     background:#f6f3ee;
 
-
     border-radius:6px;
-
 
     padding:30px;
 
-
     display:flex;
-
     flex-direction:column;
 
 }
@@ -2254,13 +2244,9 @@ footer a:hover{
 
     color:#555;
 
-    line-height:1.55;
+    line-height:1.7;
 
-    margin-bottom:15px;
-
-
-    overflow:hidden;
-
+    flex:1;
 
 }
 
@@ -2306,12 +2292,14 @@ footer a:hover{
 
 .review-images{
 
-    gap:8px;
+    display:flex;
 
+    gap:14px;
 
-    margin-top:12px;
+    margin-top:18px;
 
     flex-shrink:0;
+
 }
 
 
