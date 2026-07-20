@@ -1,206 +1,502 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* =========================
-       УСЛУГИ → WORKS
-    ========================= */
 
-    const services = document.querySelectorAll(".service-tag");
-    const worksTitle = document.getElementById("worksTitle");
-    const worksSection = document.querySelector(".works");
+/* =========================================
+   SERVICES → WORKS
+========================================= */
 
-    const backgrounds = ["auto", "furniture", "atelier", "sewing", "foam"];
 
-    const worksFolders = {
-        auto: "car",
-        furniture: "furniture",
-        atelier: "atelier",
-        sewing: "machine",
-        foam: "foam"
-    };
+const services = document.querySelectorAll(".service-tag");
 
-    services.forEach(service => {
+const worksTitle = document.getElementById("worksTitle");
 
-        service.addEventListener("click", function () {
+const worksSection = document.querySelector(".works");
 
-            services.forEach(item => item.classList.remove("active-service"));
-            this.classList.add("active-service");
 
-            worksSection.classList.remove(...backgrounds);
-            worksSection.classList.add(this.dataset.bg);
+const backgrounds = [
+    "auto",
+    "furniture",
+    "atelier",
+    "sewing",
+    "foam"
+];
 
-            if (worksTitle) {
-                worksTitle.textContent = this.dataset.title;
-            }
 
-            const folder = worksFolders[this.dataset.bg];
+const worksFolders = {
 
-            for (let i = 1; i <= 6; i++) {
-                document.getElementById(`work${i}`).src = `images/${folder}/${i}.jpg`;
-            }
+    auto:"car",
 
-            /* =========================
-   PRELOAD WORK IMAGES
-========================= */
+    furniture:"furniture",
 
-Object.values(worksFolders).forEach(folder => {
+    atelier:"atelier",
 
-    for (let i = 1; i <= 6; i++) {
+    sewing:"machine",
+
+    foam:"foam"
+
+};
+
+
+
+/* =========================================
+   IMAGE CACHE
+========================================= */
+
+
+const imageCache = {};
+
+
+
+Object.entries(worksFolders).forEach(([type, folder]) => {
+
+
+    imageCache[type] = [];
+
+
+    for(let i = 1; i <= 6; i++){
+
 
         const img = new Image();
+
+
         img.src = `images/${folder}/${i}.jpg`;
 
+
+        imageCache[type].push(img);
+
+
     }
+
 
 });
 
-            // Плавно показываем блок с работами
-setTimeout(() => {
-
-    const y = worksSection.offsetTop - 20;
-
-    window.scrollTo({
-        top: y,
-        behavior: "smooth"
-    });
-
-}, 300);
-
-        });
-
-    });
 
 
 
-/* =========================
-   REVIEWS
-========================= */
+/* =========================================
+   SWITCH WORKS
+========================================= */
 
-const cards = document.querySelectorAll(".review-card");
 
-let activeIndex = 0;
+let currentService = "auto";
 
-function renderReviews(index) {
 
-    const mobile = window.innerWidth <= 768;
 
-    if (mobile) {
+function changeWorks(type,title){
 
-        const order = [];
 
-        order.push(cards[index]);
+    currentService = type;
 
-        cards.forEach((card, i) => {
-            if (i !== index) order.push(card);
-        });
 
-        order.forEach((card, i) => {
 
-            card.classList.toggle("active", i === 0);
+    worksSection.classList.remove(...backgrounds);
 
-            card.style.transform = `
-                translateY(${i * 50}px)
-                scale(${1 - i * 0.04})
-            `;
+    worksSection.classList.add(type);
 
-            card.style.zIndex = 100 - i;
-            card.style.opacity = "1";
 
-        });
 
-        return;
+    if(worksTitle){
+
+        worksTitle.textContent = title;
+
     }
 
-    cards.forEach((card, i) => {
 
-        const diff = i - index;
 
-        card.classList.remove("active");
+    const images = imageCache[type];
 
-        if (diff === 0) {
 
-            card.style.transform = "translateY(0px) scale(1.03)";
-            card.style.zIndex = 20;
-            card.style.opacity = "1";
-            card.classList.add("active");
 
-        } else {
+    images.forEach((img,index)=>{
 
-            const y = diff * 30;
-            const scale = 1 - Math.abs(diff) * 0.03;
 
-            card.style.transform = `translateY(${y}px) scale(${scale})`;
-            card.style.zIndex = 20 - Math.abs(diff);
-            card.style.opacity = Math.abs(diff) > 2 ? "0.6" : "1";
+        const target =
+        document.getElementById(`work${index+1}`);
+
+
+
+        if(!target) return;
+
+
+
+        target.classList.add("loading");
+
+
+
+        if(img.complete){
+
+
+            target.src = img.src;
+
+
+            requestAnimationFrame(()=>{
+
+                target.classList.remove("loading");
+
+            });
+
+
+        }
+        else{
+
+
+            img.onload = ()=>{
+
+
+                target.src = img.src;
+
+
+                target.classList.remove("loading");
+
+
+            };
+
 
         }
 
+
     });
+
 
 }
 
+
+
+
+services.forEach(service=>{
+
+
+    service.addEventListener("click",()=>{
+
+
+        services.forEach(item=>{
+
+            item.classList.remove("active-service");
+
+        });
+
+
+
+        service.classList.add("active-service");
+
+
+
+        changeWorks(
+
+            service.dataset.bg,
+
+            service.dataset.title
+
+        );
+
+
+
+        setTimeout(()=>{
+
+
+            const y =
+            worksSection.offsetTop - 20;
+
+
+
+            window.scrollTo({
+
+                top:y,
+
+                behavior:"smooth"
+
+            });
+
+
+
+        },150);
+
+
+
+    });
+
+
+});
+
+
+
+
+
+/* =========================================
+   REVIEWS
+========================================= */
+
+
+const cards =
+document.querySelectorAll(".review-card");
+
+
+let activeIndex = 0;
+
+
+
+function renderReviews(index){
+
+
+    const mobile =
+    window.innerWidth <= 768;
+
+
+
+    if(mobile){
+
+
+        const order=[];
+
+
+        order.push(cards[index]);
+
+
+
+        cards.forEach((card,i)=>{
+
+
+            if(i!==index){
+
+                order.push(card);
+
+            }
+
+
+        });
+
+
+
+        order.forEach((card,i)=>{
+
+
+            card.classList.toggle(
+                "active",
+                i===0
+            );
+
+
+
+            card.style.transform =
+            `
+            translateY(${i*50}px)
+            scale(${1-i*.04})
+            `;
+
+
+
+            card.style.zIndex =
+            100-i;
+
+
+
+            card.style.opacity = 1;
+
+
+
+        });
+
+
+
+        return;
+
+    }
+
+
+
+
+
+    cards.forEach((card,i)=>{
+
+
+        const diff = i-index;
+
+
+
+        card.classList.remove("active");
+
+
+
+        if(diff===0){
+
+
+
+            card.style.transform =
+            "translateY(0) scale(1.03)";
+
+
+
+            card.style.zIndex=20;
+
+
+
+            card.style.opacity=1;
+
+
+
+            card.classList.add("active");
+
+
+
+        }
+        else{
+
+
+            card.style.transform =
+            `
+            translateY(${diff*30}px)
+            scale(${1-Math.abs(diff)*.03})
+            `;
+
+
+
+            card.style.zIndex =
+            20-Math.abs(diff);
+
+
+
+            card.style.opacity =
+            Math.abs(diff)>2 ? .6 : 1;
+
+
+
+        }
+
+
+
+    });
+
+
+}
+
+
+
+
 renderReviews(activeIndex);
 
-cards.forEach((card, i) => {
 
-    card.addEventListener("click", () => {
 
-        activeIndex = i;
+cards.forEach((card,index)=>{
+
+
+    card.addEventListener("click",()=>{
+
+
+        activeIndex=index;
+
+
         renderReviews(activeIndex);
+
 
     });
 
+
 });
 
-window.addEventListener("resize", () => {
+
+
+
+window.addEventListener("resize",()=>{
+
+
     renderReviews(activeIndex);
+
+
 });
 
-    window.addEventListener("resize", () => {
-        renderReviews(activeIndex);
-    });
 
-    /* =========================
+
+
+
+
+/* =========================================
    IMAGE VIEWER
-========================= */
+========================================= */
 
-const viewer = document.getElementById("imageViewer");
-const viewerImage = document.getElementById("viewerImage");
-const viewerClose = document.querySelector(".viewer-close");
 
-/* открываем любые картинки сайта */
+const viewer =
+document.getElementById("imageViewer");
 
-document.querySelectorAll(".work-image img, .review-photo img").forEach(img => {
 
-    img.addEventListener("click", () => {
+const viewerImage =
+document.getElementById("viewerImage");
 
-        viewerImage.src = img.src;
+
+const viewerClose =
+document.querySelector(".viewer-close");
+
+
+
+
+
+document.querySelectorAll(
+".work-image img, .review-photo img"
+)
+.forEach(img=>{
+
+
+    img.addEventListener("click",()=>{
+
+
+        viewerImage.src =
+        img.src;
+
+
 
         viewer.classList.add("show");
 
-        document.body.style.overflow = "hidden";
+
+
+        document.body.style.overflow =
+        "hidden";
+
+
 
     });
 
+
+
 });
 
-viewerClose.addEventListener("click", closeViewer);
 
-viewer.addEventListener("click", e => {
 
-    if (e.target === viewer) {
+
+
+function closeViewer(){
+
+
+    viewer.classList.remove("show");
+
+
+    document.body.style.overflow="";
+
+
+}
+
+
+
+
+viewerClose.addEventListener(
+"click",
+closeViewer
+);
+
+
+
+viewer.addEventListener(
+"click",
+(event)=>{
+
+
+    if(event.target===viewer){
 
         closeViewer();
 
     }
 
+
 });
 
-function closeViewer(){
 
-    viewer.classList.remove("show");
-
-    document.body.style.overflow = "";
-
-}
 
 });

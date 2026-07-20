@@ -1,187 +1,293 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* =========================================
+   RESET
+========================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+html{
+    scroll-behavior:smooth;
 }
 
-body {
-    background: #ece1d1;
-    font-family: 'Inter', sans-serif;
-    color: #2d2d2d;
-    overflow-x: hidden;
+body{
+
+    background:#ece1d1;
+
+    font-family:'Inter',sans-serif;
+
+    color:#2d2d2d;
+
+    overflow-x:hidden;
+
 }
 
-/* =========================
-   ФОН 
-========================= */
 
-/* бумажная текстура */
-/* =========================
-   ФОН
-========================= */
-/* =========================
-   ФОН
-========================= */
+/* =========================================
+   VARIABLES
+========================================= */
 
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
+:root{
+
+    --accent:#8f5346;
+    --accent-dark:#7a4338;
+
+    --paper:#f7f1e6;
+    --paper-light:#fff6ef;
+
+    --text:#2d2d2d;
+    --soft-text:#5a4a3f;
+
+    --gold:#c8a97d;
+
+}
+
+
+/* =========================================
+   BACKGROUND TEXTURE
+========================================= */
+
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
 
     background:
-        radial-gradient(rgba(88, 63, 41, 0.035) 1px, transparent 1px),
-        radial-gradient(rgba(120, 90, 60, 0.02) 1px, transparent 1px);
+    radial-gradient(
+        rgba(88,63,41,.035) 1px,
+        transparent 1px
+    ),
+    radial-gradient(
+        rgba(120,90,60,.02) 1px,
+        transparent 1px
+    );
 
-    background-size: 4px 4px, 9px 9px;
+    background-size:
+    4px 4px,
+    9px 9px;
 
-    opacity: .55;
+    opacity:.55;
 
-    pointer-events: none;
-    z-index: 0;
+    pointer-events:none;
+
+    z-index:0;
+
 }
 
-body::after {
-    content: "";
-    position: fixed;
-    inset: 0;
 
-    pointer-events: none;
+body::after{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
 
     background:
-        radial-gradient(circle at center,
-            transparent 58%,
-            rgba(70,45,25,.10));
+    radial-gradient(
+        circle at center,
+        transparent 58%,
+        rgba(70,45,25,.10)
+    );
 
-    z-index: 0;
+
+    pointer-events:none;
+
+    z-index:0;
+
 }
 
-/* контейнер */
-.container {
-    width: min(1200px, 90%);
-    margin: 0 auto;
-    position: relative;
-    z-index: 1;
+
+
+/* =========================================
+   CONTAINER
+========================================= */
+
+
+.container{
+
+    width:min(1200px,90%);
+
+    margin:0 auto;
+
+    position:relative;
+
+    z-index:1;
+
 }
+
+
 
 
 /* =========================================
    HERO
 ========================================= */
 
+
 .hero{
+
     position:relative;
-    height :540px;
+
+    height:540px;
+
     overflow:hidden;
+
 }
+
+
 
 .hero-photo{
+
     position:absolute;
+
     inset:0;
 
-    background:url("nitki.jpg") center center/cover no-repeat;
+    background:
+    url("nitki.jpg")
+    center/cover
+    no-repeat;
+
 }
 
+
+
 .hero-photo::after{
+
     content:"";
+
     position:absolute;
+
     inset:0;
 
-    background:linear-gradient(
+    background:
+    linear-gradient(
         to bottom,
         rgba(0,0,0,.12),
         rgba(0,0,0,.22)
     );
+
 }
 
 
 
-/* Вырез снизу */
 
 .hero-cutout{
 
     position:absolute;
 
     left:50%;
+
     bottom:0;
 
     transform:translateX(-50%);
 
     width:min(760px,92%);
 
+
     background:#ede2d2;
 
-    border-radius:10px 10px 0 0;
+
+    border-radius:
+    10px 10px 0 0;
+
 
     box-shadow:
-        0 -10px 30px rgba(0,0,0,.12);
+    0 -10px 30px rgba(0,0,0,.12);
+
 
     z-index:5;
+
 }
+
+
 
 
 .hero-content{
 
-    padding:40px 70px 45px;
+    padding:
+    40px
+    70px
+    45px;
+
 
     text-align:center;
+
 }
 
 
-.hero p{
 
-    font-size:20px;
+/* LOGO */
 
-    line-height:1.6;
-
-    color:#56473d;
-
-    margin-bottom:28px;
-}
-/* логотип */
 
 .logo{
+
     margin-bottom:18px;
+
     display:flex;
+
     justify-content:center;
+
 }
+
+
 
 .logo img{
+
     width:70px;
+
 }
 
-/* заголовок */
+
+
+
+/* TITLE */
+
 
 .hero h1{
 
-    font-family:"Cormorant Garamond",serif;
+    font-family:
+    "Cormorant Garamond",
+    serif;
+
 
     font-size:72px;
 
     line-height:.95;
 
+
     margin-bottom:28px;
 
-    color:#2d2d2d;
+    color:#33281f;
+
 }
 
-/* описание */
+
+
+
 
 .hero p{
+
 
     font-size:19px;
 
     line-height:1.8;
 
+
     color:#555;
 
+
     margin-bottom:35px;
+
 }
 
-/* контакты */
+
+
 
 .contacts{
 
@@ -192,394 +298,698 @@ body::after {
     line-height:1.8;
 
     font-size:15px;
+
 }
+
 
 .contacts a{
 
     color:inherit;
 
     text-decoration:none;
+
 }
 
 
-/* ===== SERVICES ===== */
-.services {
-    padding: 30px 0 60px;
+
+
+
+/* =========================================
+   SECTION TITLES
+========================================= */
+
+
+.section-title{
+
+    font-family:
+    "Cormorant Garamond",
+    serif;
+
+
+    font-size:42px;
+
+    text-align:center;
+
+    margin-bottom:25px;
+
 }
 
-.section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 42px;
-    text-align: center;
-    margin-bottom: 25px;
+
+
+
+
+/* =========================================
+   SERVICES
+========================================= */
+
+
+.services{
+
+    padding:
+    30px
+    0
+    60px;
+
 }
 
-.services-row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
-    flex-wrap: wrap;
+
+
+.services-row{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:25px;
+
+    flex-wrap:wrap;
+
 }
 
 
-/* ===== КАРТОЧКА-БИРКА ===== */
+
 
 .service-tag{
+
     position:relative;
+
     width:190px;
+
     height:110px;
+
     cursor:pointer;
+
     transition:.25s;
+
     user-select:none;
+
 }
 
-/* фон */
+
+
+
+
 .tag-shape{
+
     position:absolute;
+
     inset:0;
-    background:#fff6ef;
-    clip-path:polygon(0 0,85% 0,100% 50%,85% 100%,0 100%);
+
+    background:
+    var(--paper-light);
+
+
+    clip-path:
+    polygon(
+    0 0,
+    85% 0,
+    100% 50%,
+    85% 100%,
+    0 100%
+    );
+
+
     transition:.25s;
+
 }
 
-/* рамка */
+
+
+
 .border-svg{
+
     position:absolute;
+
     inset:0;
+
     width:100%;
+
     height:100%;
+
     z-index:2;
+
     opacity:.35;
+
     pointer-events:none;
-    transition:.25s;
+
 }
+
+
 
 .border-svg path{
+
     fill:none;
-    stroke:rgba(110,85,65,.45);
+
+    stroke:
+    rgba(110,85,65,.45);
+
+
     stroke-width:2;
+
     stroke-dasharray:7 7;
-    vector-effect:non-scaling-stroke;
+
+    vector-effect:
+    non-scaling-stroke;
+
 }
 
-/* текст */
+
+
+
 .service-tag span{
+
     position:relative;
+
     z-index:4;
+
+
     display:flex;
+
     justify-content:center;
+
     align-items:center;
+
+
     height:100%;
+
+
     padding:20px;
+
+
     color:#4d4035;
+
+
     text-align:center;
-    transition:.25s;
+
 }
 
-/* отверстие */
+
+
+
 .tag-hole{
+
     position:absolute;
+
+
     right:18px;
+
     top:50%;
-    transform:translateY(-50%);
+
+
+    transform:
+    translateY(-50%);
+
+
     width:12px;
+
     height:12px;
+
+
     border-radius:50%;
+
+
     background:#f3efea;
-    border:1px solid rgba(80,60,40,.15);
+
+
+    border:
+    1px solid rgba(80,60,40,.15);
+
+
     z-index:5;
-    transition:.25s;
+
 }
 
-/* ===== АКТИВНАЯ БИРКА ===== */
+
+
+
 
 .service-tag.active-service .tag-shape{
-    background:#8f5346;
+
+    background:
+    var(--accent);
+
 }
+
+
 
 .service-tag.active-service span{
-    color:rgba(224, 223, 223, 0.92);
+
+    color:
+    rgba(224,223,223,.92);
+
 }
 
-.service-tag.active-service .border-svg{
-    opacity:1;
-}
 
-.service-tag.active-service .border-svg path{
-    stroke:rgba(143, 140, 140, 0.6);
-}
-
-.service-tag.active-service .tag-hole{
-    border-color:rgba(197, 189, 189, 0.35);
-}
-
-/* hover */
 
 .service-tag:hover{
-    transform:translateY(-3px);
-}
 
-/* ===== WORKS ===== */
-.works {
-    position: relative;
-    overflow: hidden;
-    /* Смягчаем фон до оттенка теплого молочного шоколада, чтобы тени на фото не чернели */
-    background: #3d3128; 
-    padding: 100px 0;
-}
+    transform:
+    translateY(-3px);
 
-.works::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-size: cover;
-    background-position: center;
-    
-    /* Идеальный баланс: текстура отлично видна, но не слепит глаза */
-    opacity: 0.45; 
-    
-    /* Усиливаем контраст и резкость, чтобы поры кожи и волокна ткани «выпуклились» */
-    filter: contrast(125%) brightness(95%) sepia(25%); 
-    
-    /* Убираем жесткое смешивание, оставляя чистое наложение на благородный фон */
-    mix-blend-mode: normal; 
-    
-    transition: opacity 0.4s ease;
-}
-
-/* При наведении текстура становится еще более рельефной и осязаемой */
-.works:hover::before {
-    opacity: 0.52;
 }
 
 
-.works .container {
-    position: relative;
-    z-index: 2;
-}
 
-.works-title {
-    color: #fff;
-    text-align: center;
-    font-size: 42px;
-    margin-bottom: 60px;
-    font-family: 'Cormorant Garamond', serif;
-}
+/* =========================================
+   WORKS
+========================================= */
 
-.work-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
-    max-width: 800px;
-    margin: auto;
-}
 
-.work-card {
-    position: relative;
-}
+.works{
 
-.work-card::after {
-    content: '';
-    position: absolute;
-    inset: -15px;
-    border: 2px dashed rgba(255, 255, 255, 0.3);
-}
+    position:relative;
 
-.work-image {
-    height: 220px;
-    background: #cfcfcf;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+    overflow:hidden;
 
-.work-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
+    background:#3d3128;
 
+    padding:100px 0;
+
+}
 
 
 
 .works::before{
-    background-image:none;
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background-size:cover;
+
+    background-position:center;
+
+
+    opacity:.45;
+
+
+    filter:
+    contrast(125%)
+    brightness(95%)
+    sepia(25%);
+
+
+    transition:
+    opacity .4s ease;
+
 }
 
-.works.auto::before {
-    background-image: url("koja.jpg");
-}
 
-.works.furniture::before {
-    background-image: url("mebel.jpg");
-}
 
-.works.atelier::before {
-    background-image: url("atele.jpg");
-}
-
-.works.sewing::before {
-    background-image: url("shvenoe.jpg");
-}
-
-.works.foam::before {
-    background-image: url("porolon.jpg");
+.works.auto::before{
+    background-image:url("koja.jpg");
 }
 
 
+.works.furniture::before{
+    background-image:url("mebel.jpg");
+}
 
 
-/* ===== REVIEWS ===== */
+.works.atelier::before{
+    background-image:url("atele.jpg");
+}
+
+
+.works.sewing::before{
+    background-image:url("shvenoe.jpg");
+}
+
+
+.works.foam::before{
+    background-image:url("porolon.jpg");
+}
+
+
+
+.works .container{
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+
+
+.works-title{
+
+    color:white;
+
+    text-align:center;
+
+    font-family:
+    "Cormorant Garamond",
+    serif;
+
+
+    font-size:42px;
+
+    margin-bottom:60px;
+
+}
+
+
+
+
+.work-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+
+    gap:40px;
+
+
+    max-width:800px;
+
+
+    margin:auto;
+
+}
+
+
+
+.work-card{
+
+    position:relative;
+
+}
+
+
+
+.work-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-15px;
+
+    border:
+    2px dashed
+    rgba(255,255,255,.3);
+
+}
+
+
+
+.work-image{
+
+    height:220px;
+
+    background:#cfcfcf;
+
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
+
+}
+
+
+
+
+.work-image img{
+
+    width:100%;
+
+    height:100%;
+
+    display:block;
+
+    object-fit:cover;
+
+    cursor:zoom-in;
+
+
+    transition:
+    opacity .25s ease,
+    transform .25s ease;
+
+}
+
+
+
+
+.work-image img:hover{
+
+    transform:scale(1.02);
+
+}
+
+
+
+.work-image img.loading{
+
+    opacity:0;
+
+}
+
+
+
+
+/* =========================================
+   REVIEWS
+========================================= */
+
 
 .reviews{
+
     padding:80px 0 50px;
+
 }
+
+
 
 .review-stack{
+
     position:relative;
+
     width:760px;
+
     height:420px;
+
     margin:auto;
+
 }
 
-/* ПАПКА */
+
 
 .review-card{
 
     position:absolute;
+
+
     width:620px;
+
     height:340px;
+
+
     background:#d7c29d;
+
+
     border-radius:10px;
+
+
     cursor:pointer;
 
-    transition: transform 0.45s ease, opacity 0.3s ease, box-shadow 0.3s ease;
-    box-shadow:0 18px 35px rgba(0,0,0,.15);
+
+    transition:
+    transform .45s ease,
+    opacity .3s ease,
+    box-shadow .3s ease;
+
+
+    box-shadow:
+    0 18px 35px rgba(0,0,0,.15);
+
 }
 
-/* вкладка */
+
+
 
 .folder-tab{
 
     position:absolute;
 
+
     top:-34px;
+
     left:24px;
+
 
     height:34px;
 
+
     padding:0 24px;
 
+
     display:flex;
+
     align-items:center;
+
 
     background:#c6ab82;
 
-    border-radius:10px 10px 0 0;
+
+    border-radius:
+    10px 10px 0 0;
+
 
     font-weight:600;
+
     font-size:15px;
 
+
     color:#3d3024;
+
 }
 
-/* лист бумаги */
+
+
 
 .paper{
 
     position:absolute;
 
+
     left:14px;
+
     right:14px;
+
+
     top:18px;
+
     bottom:14px;
+
 
     background:#f6f3ee;
 
+
     border-radius:6px;
+
 
     padding:30px;
 
+
     display:flex;
+
     flex-direction:column;
+
 }
 
-/* расположение */
+
+
 
 .review-card:nth-child(1){
 
     top:0;
+
     left:0;
 
     z-index:3;
+
 }
+
+
 
 .review-card:nth-child(2){
 
     top:38px;
+
     left:60px;
 
     transform:rotate(-2deg);
 
     z-index:2;
+
 }
+
+
 
 .review-card:nth-child(3){
 
     top:76px;
+
     left:120px;
 
     transform:rotate(2deg);
 
     z-index:1;
+
 }
 
 
-/* штамп */
+
 
 .stamp{
 
     position:absolute;
 
+
     right:24px;
+
     top:20px;
 
-    border:3px solid #a34848;
+
+    border:
+    3px solid #a34848;
+
 
     color:#a34848;
 
+
     padding:8px 18px;
+
 
     font-weight:700;
 
+
     transform:rotate(-11deg);
+
 }
 
-/* имя */
+
 
 .paper h3{
 
-    font-family:"Cormorant Garamond",serif;
+    font-family:
+    "Cormorant Garamond",
+    serif;
+
 
     font-size:34px;
 
     margin-bottom:6px;
+
 }
 
-/* дата */
+
+
 
 .review-date{
 
-    color:#8f5346;
+    color:var(--accent);
 
     font-size:14px;
 
     margin-bottom:18px;
+
 }
 
-/* текст */
+
+
 
 .paper p{
 
@@ -588,12 +998,11 @@ body::after {
     line-height:1.7;
 
     flex:1;
+
 }
 
 
 
-
-/* фото */
 
 .review-images{
 
@@ -602,1118 +1011,1678 @@ body::after {
     gap:14px;
 
     margin-top:18px;
+
 }
+
+
 
 .review-photo{
 
     width:150px;
+
     height:95px;
 
+
     background:#ddd;
 
-    border:6px solid white;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    border:
+    6px solid white;
 
-    font-weight:600;
-
-    box-shadow:0 4px 10px rgba(0,0,0,.12);
-}
-
-/* ===== ПОЧЕМУ ВЫБИРАЮТ НАС ===== */
-
-.advantages {
-    padding: 60px 0 100px;
-}
-
-.advantages-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 35px;
-}
-
-.advantage-card {
-    position: relative;
-    padding: 55px 35px 35px;
-    background: #f7f1e6;
-    border: 1px solid rgba(80,60,40,0.25);
-    border-radius: 6px 8px 7px 5px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    transition: 0.3s ease;
-}
-
-/* внутренняя "старинная рамка" */
-.advantage-card::before {
-    content: "";
-    position: absolute;
-    inset: 6px;
-    border: 1px dashed rgba(80,60,40,0.25);
-    border-radius: 4px;
-    pointer-events: none;
-}
-
-/* номер как штамп */
-.advantage-card::after {
-    content: attr(data-number);
-    position: absolute;
-    top: -18px;
-    left: 18px;
-    background: #c8a97d;
-    color: #2d2d2d;
-    padding: 6px 14px;
-    font-weight: 700;
-    border-radius: 4px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-}
-
-/* заголовок */
-.advantage-card h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 28px;
-    margin-bottom: 12px;
-}
-
-/* текст */
-.advantage-card p {
-    color: #5a4a3f;
-    line-height: 1.7;
-}
-
-/* лёгкий “ручной” hover */
-.advantage-card:hover {
-    transform: translateY(-6px) rotate(-0.2deg);
-
-}
-
-
-/* ===== КАРТА ===== */
-
-.map-section{
-    padding: 40px 0 80px;
-}
-
-.map-card{
-    overflow: hidden;
-    border-radius: 8px;
-    border: 1px solid rgba(80,60,40,.2);
-    box-shadow: 0 15px 35px rgba(0,0,0,.08);
-    background: #f7f1e6;
-}
-
-.map-card iframe{
-    display: block;
-    width: 100%;
-    height: 450px;
-    border: 0;
-}
-
-.map-subtitle{
-    text-align:center;
-    font-size:22px;
-    font-weight:400;
-    color:#6b5a4d;
-    margin-top:-10px;
-    margin-bottom:30px;
-}
-
-@media (max-width:768px){
-
-    .map-section{
-        padding: 40px 0 60px;
-    }
-
-    .map-card iframe{
-        height: 300px;
-    }
-
-}
-
-
-
-/* ===== КОНСУЛЬТАЦИЯ (ПЕРЕСТИЛЬ ПОД АТЕЛЬЕ) ===== */
-
-.consultation {
-    padding: 80px 0 100px;
-}
-
-/* лист/карточка как архивный документ */
-.consultation-card {
-    position: relative;
-    background: #f7f1e6;
-    padding: 90px 50px 60px;
-    max-width: 900px;
-    margin: auto;
-
-    border: 1px solid rgba(80,60,40,0.25);
-    border-radius: 6px 8px 7px 5px;
-
-    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
-}
-
-/* внутренняя рамка как на “папках” */
-.consultation-card::after {
-    content: "";
-    position: absolute;
-    inset: 8px;
-    border: 1px dashed rgba(80,60,40,0.25);
-    border-radius: 4px;
-    pointer-events: none;
-}
-
-/* бирка сверху (как у заказов) */
-.consultation-card::before {
-    content: "КОНСУЛЬТАЦИЯ";
-    position: absolute;
-    top: -18px;
-    left: 25px;
-
-    background: #c8a97d;
-    color: #2d2d2d;
-
-    padding: 8px 18px;
-    font-weight: 700;
-    font-size: 14px;
-
-    border-radius: 4px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.12);
-}
-
-/* заголовок */
-.consultation-card h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 44px;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-/* текст */
-.consultation-card p {
-    text-align: center;
-    max-width: 650px;
-    margin: 0 auto 35px;
-    line-height: 1.8;
-    color: #5a4a3f;
-}
-
-/* кнопки */
-.consultation-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-/* WhatsApp делаем “вторичной бумажной” */
-.whatsapp-btn {
-    background: #f3efea;
-    color: #8f5346;
-    border: 1px solid rgba(143,83,70,0.4);
-}
-
-.whatsapp-btn:hover {
-    background: #fff;
-}
-
-
-
-
-
-/* ===== FOOTER ===== */
-
-footer{
-    position:relative;
-    background:#8f5346;
-    color:#fff;
-    padding:90px 0 35px;
-    overflow:hidden;
-}
-
-
-/* декоративная надпись */
-
-.footer-brand{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:18px;
-    margin-bottom:45px;
-}
-
-.footer-brand .line{
-    flex:1;
-    max-width:120px;
-    height:1px;
-    background:rgba(255,255,255,.18);
-}
-
-.footer-brand .brand-text{
-    font-family:"Cormorant Garamond",serif;
-    font-size:18px;
-    letter-spacing:2px;
-    color:rgba(255,255,255,.92);
-    text-transform:uppercase;
-}
-
-/* колонки */
-
-.footer-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:50px;
-}
-
-.footer-title{
-    font-family:"Cormorant Garamond",serif;
-    font-size:30px;
-    margin-bottom:18px;
-}
-
-.footer-links{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-}
-
-.footer-grid div{
-    line-height:1.9;
-}
-
-footer a{
-    color:rgba(255,255,255,.9);
-    text-decoration:none;
-    transition:.25s;
-}
-
-footer a:hover{
-    color:#f6e3bf;
-    padding-left:4px;
-}
-
-/* подпись */
-
-.footer-bottom{
-    margin-top:45px;
-    padding-top:20px;
-    border-top:1px solid rgba(255,255,255,.15);
-    text-align:center;
-    color:rgba(255,255,255,.65);
-    font-size:14px;
-}
-
-
-
-
-
-
-/* =========================================
-   MOBILE 480px
-========================================= */
-
-@media (max-width:480px){
-
-.hero{
-    padding:40px 0;
-}
-
-.hero h1{
-
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:58px;
-
-    line-height:1;
-
-    margin-bottom:18px;
-
-    color:#33281f;
-}
-
-.hero p{
-
-    font-size:20px;
-
-    line-height:1.6;
-
-    color:#56463b;
-
-    margin-bottom:28px;
-}
-
-.logo img{
-    width:60px;
-}
-
-.section-title,
-.works-title{
-    font-size:30px;
-}
-
-.service-tag{
-    height:75px;
-}
-
-.service-tag span{
-    font-size:15px;
-}
-
-.work-image{
-    height:190px;
-}
-
-.paper{
-    padding:20px;
-}
-
-.paper h3{
-    font-size:24px;
-}
-
-.review-photo{
-    width:100%;
-    height:170px;
-}
-
-.consultation-card h2{
-    font-size:28px;
-}
-
-
-footer{
-    padding:70px 0 30px;
-}
-
-.footer-bottom{
-    font-size:13px;
-}
-
-}
-
-
-
-/* ===== КНОПКИ ===== */
-
-.btn{
-    display:inline-flex;
-    justify-content:center;
-    align-items:center;
-
-    padding:16px 36px;
-
-    background:#8f5346;
-    color:#fff;
-
-    border:1px solid #8f5346;
-    border-radius:4px;
-
-    text-decoration:none;
-
-    font-weight:600;
-
-    transition:.25s;
-}
-
-.btn:hover{
-    background:#7a4338;
-    border-color:#7a4338;
-    transform:translateY(-2px);
-}
-
-/* ===== МОБИЛЬНАЯ КАРТОТЕКА ОТЗЫВОВ ===== */
-
-/* =========================================
-   МОБИЛЬНАЯ СТОПКА ОТЗЫВОВ
-========================================= */
-
-@media (max-width:768px){
-
-.reviews{
-    padding:55px 0;
-}
-
-.review-stack{
-
-    position:relative;
-
-    width:100%;
-    max-width:360px;
-
-    height:310px;
-
-    margin:auto;
-}
-
-.review-card{
-
-    position:absolute;
-
-    left:0;
-    top:0;
-
-    width:100%;
-    height:255px;
-
-    overflow:visible;
-
-    transition:
-        transform .45s cubic-bezier(.2,.8,.2,1),
-        box-shadow .35s,
-        opacity .35s;
-
-    cursor:pointer;
-}
-
-/* первая */
-
-.review-card:nth-child(1){
-
-    top:0;
-}
-
-/* вторая */
-
-.review-card:nth-child(2){
-
-    top:22px;
-}
-
-/* третья */
-
-.review-card:nth-child(3){
-
-    top:44px;
-}
-
-.paper{
-
-    padding:16px;
-}
-
-.paper h3{
-
-    font-size:24px;
-}
-
-.paper p{
-font-size:14px;
-    line-height:1.55;
-}
-
-.stamp{
-
-    right:14px;
-    top:14px;
-
-    padding:5px 10px;
-
-    font-size:10px;
-}
-
-.review-images{
-
-    gap:8px;
-    margin-top:12px;
-}
-
-.review-photo{
-
-    width:95px;
-    height:65px;
-
-    border-width:4px;
-}
-
-.folder-tab{
-
-    top:-28px;
-
-    height:28px;
-
-    padding:0 14px;
-
-    font-size:12px;
-}
-
-}
-
-
-
-/* =========================================
-   FIX ДЛЯ МОБИЛЬНЫХ ОТЗЫВОВ
-========================================= */
-
-@media (max-width:768px){
-
-.review-stack{
-    position:relative;
-    width:100%;
-    max-width:360px;
-    height:320px;
-    margin:auto;
-}
-
-.review-card{
-
-    position:absolute !important;
-
-    top:0 !important;
-    left:0 !important;
-
-    width:100%;
-    height:255px;
-
-    overflow:visible !important;
-
-    transition:
-        transform .45s cubic-bezier(.2,.8,.2,1),
-        box-shadow .35s,
-        opacity .35s;
-
-    cursor:pointer;
-}
-
-.review-card:nth-child(1),
-.review-card:nth-child(2),
-.review-card:nth-child(3){
-
-    top:0 !important;
-    left:0 !important;
-    transform:none;
-}
-
-.folder-tab{
-    top:-28px;
-}
-
-.paper{
-    padding:16px;
-}
-
-.paper h3{
-    font-size:24px;
-}
-
-.paper p{
-    font-size:14px;
-    line-height:1.45;
-}
-
-.review-images{
-    gap:8px;
-}
-
-.review-photo{
-    width:95px;
-    height:65px;
-}
-
-}
-
-
-/* =========================================
-   HERO MOBILE
-========================================= */
-
-@media (max-width:768px){
-
-.hero{
-
-    height:500px;
-}
-
-.hero-cutout{
-
-    width:92%;
-
-    border-radius:12px 12px 0 0;
-}
-
-.hero-content{
-
-    padding:28px 22px 30px;
-
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-
-    text-align:center;
-}
-
-.logo{
-
-    margin-bottom:14px;
-}
-
-.logo img{
-
-    width:58px;
-}
-
-.hero h1{
-
-    font-size:42px;
-
-    line-height:.95;
-
-    margin-bottom:14px;
-
-    text-align:center;
-}
-
-.hero p{
-
-    max-width:280px;
-
-    margin:0 auto 22px;
-
-    font-size:16px;
-
-    line-height:1.55;
-
-    text-align:center;
-}
-
-.btn{
-
-    width:100%;
-    max-width:250px;
-
-    padding:14px 22px;
-}
-
-.contacts{
-
-    margin-top:18px;
-
-    font-size:14px;
-
-    line-height:1.7;
-
-    text-align:center;
-
-    width:100%;
-}
-
-}
-
-
-/* =========================================
-   SERVICES + WORKS MOBILE
-========================================= */
-
-@media (max-width:768px){
-
-/* ---------- Заголовки ---------- */
-
-.section-title,
-.works-title{
-
-    font-size:34px;
-
-    margin-bottom:22px;
-
-    text-align:center;
-}
-
-/* ---------- Услуги ---------- */
-
-.services{
-
-    padding:40px 0 50px;
-}
-
-.services-row{
-
-    gap:12px;
-
-    justify-content:center;
-}
-
-.service-tag{
-
-    width:155px;
-    height:82px;
-}
-
-.service-tag span{
-
-    padding:14px;
-
-    font-size:14px;
-
-    line-height:1.25;
-}
-
-.tag-hole{
-
-    width:10px;
-    height:10px;
-
-    right:14px;
-}
-
-/* ---------- Работы ---------- */
-
-.works{
-
-    padding:55px 0;
-}
-
-.works-title{
-
-    margin-bottom:28px;
-}
-
-.work-grid{
-
-    grid-template-columns:1fr;
-
-    gap:18px;
-
-    max-width:340px;
-}
-
-.work-card::after{
-
-    inset:-8px;
-}
-
-.work-image{
-
-    height:190px;
-}
-
-.work-image img{
-
-    object-fit:cover;
-}
-
-/* лёгкое увеличение при тапе */
-
-.work-card{
-
-    transition:.25s;
-}
-
-.work-card:active{
-
-    transform:scale(.98);
-}
-
-}
-
-/* =========================================
-   MOBILE FIX
-   ADVANTAGES + CONSULTATION + FOOTER
-========================================= */
-
-@media (max-width:768px){
-
-/* ===========================
-   Почему выбирают нас
-=========================== */
-
-.advantages{
-
-    padding:55px 0;
-}
-
-.advantages-grid{
-
-    display:grid;
-
-    grid-template-columns:1fr;
-
-    gap:18px;
-}
-
-.advantage-card{
-
-    width:100%;
-
-    padding:48px 20px 22px;
-
-    min-height:auto;
-}
-
-.advantage-card::after{
-
-    top:-14px;
-    left:16px;
-
-    padding:5px 12px;
-
-    font-size:14px;
-}
-
-.advantage-card h3{
-
-    font-size:26px;
-
-    line-height:1.15;
-
-    text-align:center;
-
-    margin-bottom:12px;
-}
-
-.advantage-card p{
-
-    text-align:center;
-
-    font-size:15px;
-
-    line-height:1.65;
-}
-
-/* ===========================
-   Консультация
-=========================== */
-
-.consultation{
-
-    padding:55px 0 65px;
-}
-
-.consultation-card{
-
-    padding:60px 22px 28px;
-
-    border-radius:8px;
-}
-
-.consultation-card::before{
-
-    left:50%;
-
-    transform:translateX(-50%);
-}
-
-.consultation-card h2{
-
-    font-size:34px;
-
-    line-height:1;
-
-    text-align:center;
-}
-
-.consultation-card p{
-
-    font-size:15px;
-
-    line-height:1.7;
-
-    margin-bottom:26px;
-}
-
-.consultation-buttons{
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
-    gap:12px;
-}
-
-.consultation-buttons .btn{
-
-    width:100%;
-
-    max-width:260px;
-}
-
-/* ===========================
-   FOOTER
-=========================== */
-
-footer{
-
-    padding:45px 0 20px;
-}
-
-.footer-brand{
-
-    margin-bottom:28px;
-
-    gap:10px;
-}
-
-.footer-brand .line{
-
-    max-width:45px;
-}
-
-.footer-brand .brand-text{
-
-    font-size:13px;
-
-    line-height:1.4;
-
-    text-align:center;
-
-    letter-spacing:1px;
-}
-
-.footer-grid{
-
-    display:grid;
-
-    grid-template-columns:1fr;
-
-    gap:26px;
-
-    text-align:center;
-}
-
-.footer-grid>div{
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
-    justify-content:center;
-}
-
-.footer-title{
-
-    font-size:26px;
-
-    margin-bottom:10px;
-}
-
-.footer-grid a{
-
-    word-break:break-word;
-}
-
-.footer-bottom{
-
-    margin-top:28px;
-
-    padding-top:16px;
-
-    font-size:12px;
-
-    line-height:1.6;
-
-    text-align:center;
-}
-
-}
-
-
-.review-photo{
 
     overflow:hidden;
 
-    padding:0;
 
-    background:#ddd;
+    box-shadow:
+    0 4px 10px rgba(0,0,0,.12);
+
 }
+
+
 
 .review-photo img{
 
     width:100%;
+
     height:100%;
+
 
     display:block;
 
     object-fit:cover;
 
+
+    cursor:zoom-in;
+
+}
+
+
+
+
+/* =========================================
+   ADVANTAGES
+========================================= */
+
+
+.advantages{
+
+    padding:60px 0 100px;
+
+}
+
+
+
+.advantages-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+
+    gap:35px;
+
+}
+
+
+
+.advantage-card{
+
+    position:relative;
+
+
+    padding:
+    55px
+    35px
+    35px;
+
+
+    background:
+    var(--paper);
+
+
+    border:
+    1px solid
+    rgba(80,60,40,.25);
+
+
+    border-radius:
+    6px 8px 7px 5px;
+
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.08);
+
+
+    transition:.3s ease;
+
+}
+
+
+
+
+.advantage-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:6px;
+
+
+    border:
+    1px dashed
+    rgba(80,60,40,.25);
+
+
+    border-radius:4px;
+
+}
+
+
+
+
+.advantage-card::after{
+
+    content:attr(data-number);
+
+
+    position:absolute;
+
+
+    top:-18px;
+
+    left:18px;
+
+
+    background:
+    var(--gold);
+
+
+    color:#2d2d2d;
+
+
+    padding:6px 14px;
+
+
+    font-weight:700;
+
+
+    border-radius:4px;
+
+
+    box-shadow:
+    0 4px 10px rgba(0,0,0,.15);
+
+}
+
+
+
+
+.advantage-card h3{
+
+    font-family:
+    "Cormorant Garamond",
+    serif;
+
+
+    font-size:28px;
+
+    margin-bottom:12px;
+
+}
+
+
+
+.advantage-card p{
+
+    color:var(--soft-text);
+
+    line-height:1.7;
+
+}
+
+
+
+.advantage-card:hover{
+
+    transform:
+    translateY(-6px)
+    rotate(-.2deg);
+
+}
+
+
+
+
+/* =========================================
+   MAP
+========================================= */
+
+
+.map-section{
+
+    padding:40px 0 80px;
+
+}
+
+
+
+.map-card{
+
+    overflow:hidden;
+
+    border-radius:8px;
+
+
+    border:
+    1px solid rgba(80,60,40,.2);
+
+
+    box-shadow:
+    0 15px 35px rgba(0,0,0,.08);
+
+
+    background:
+    var(--paper);
+
+}
+
+
+
+.map-card iframe{
+
+    display:block;
+
+    width:100%;
+
+    height:450px;
+
+    border:0;
+
+}
+
+
+
+.map-subtitle{
+
+    text-align:center;
+
+    font-size:22px;
+
+    font-weight:400;
+
+
+    color:#6b5a4d;
+
+
+    margin-top:-10px;
+
+    margin-bottom:30px;
+
+}
+
+
+
+/* =========================================
+   CONSULTATION
+========================================= */
+
+
+.consultation{
+
+    padding:
+    80px
+    0
+    100px;
+
+}
+
+
+
+.consultation-card{
+
+    position:relative;
+
+
+    background:
+    var(--paper);
+
+
+    padding:
+    90px
+    50px
+    60px;
+
+
+    max-width:900px;
+
+
+    margin:auto;
+
+
+    border:
+    1px solid
+    rgba(80,60,40,.25);
+
+
+    border-radius:
+    6px 8px 7px 5px;
+
+
+    box-shadow:
+    0 15px 35px rgba(0,0,0,.08);
+
+}
+
+
+
+
+.consultation-card::after{
+
+    content:"";
+
+
+    position:absolute;
+
+
+    inset:8px;
+
+
+    border:
+    1px dashed
+    rgba(80,60,40,.25);
+
+
+    border-radius:4px;
+
+
+    pointer-events:none;
+
+}
+
+
+
+
+.consultation-card::before{
+
+    content:"КОНСУЛЬТАЦИЯ";
+
+
+    position:absolute;
+
+
+    top:-18px;
+
+
+    left:25px;
+
+
+
+    background:
+    var(--gold);
+
+
+
+    color:#2d2d2d;
+
+
+
+    padding:
+    8px
+    18px;
+
+
+
+    font-weight:700;
+
+
+    font-size:14px;
+
+
+
+    border-radius:4px;
+
+
+
+    box-shadow:
+    0 6px 15px rgba(0,0,0,.12);
+
+}
+
+
+
+
+.consultation-card h2{
+
+    font-family:
+    "Cormorant Garamond",
+    serif;
+
+
+    font-size:44px;
+
+
+    text-align:center;
+
+
+    margin-bottom:20px;
+
+}
+
+
+
+
+.consultation-card p{
+
+    text-align:center;
+
+
+    max-width:650px;
+
+
+    margin:
+    0
+    auto
+    35px;
+
+
+
+    line-height:1.8;
+
+
+    color:
+    var(--soft-text);
+
+}
+
+
+
+
+
+.consultation-buttons{
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+    gap:20px;
+
+
+    flex-wrap:wrap;
+
+}
+
+
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+
+.btn{
+
+    display:inline-flex;
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+
+    padding:
+    16px
+    36px;
+
+
+
+    background:
+    var(--accent);
+
+
+
+    color:white;
+
+
+
+    border:
+    1px solid
+    var(--accent);
+
+
+
+    border-radius:4px;
+
+
+
+    text-decoration:none;
+
+
+
+    font-weight:600;
+
+
+
     transition:.25s;
+
 }
 
-.review-photo:hover img{
 
-    transform:scale(1.04);
+
+.btn:hover{
+
+    background:
+    var(--accent-dark);
+
+
+    border-color:
+    var(--accent-dark);
+
+
+
+    transform:
+    translateY(-2px);
+
 }
+
+
+
+.whatsapp-btn{
+
+    background:
+    #f3efea;
+
+
+    color:
+    var(--accent);
+
+
+
+    border:
+    1px solid
+    rgba(143,83,70,.4);
+
+}
+
+
+
+.whatsapp-btn:hover{
+
+    background:white;
+
+}
+
+
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+
+footer{
+
+    position:relative;
+
+
+    background:
+    var(--accent);
+
+
+
+    color:white;
+
+
+    padding:
+    90px
+    0
+    35px;
+
+
+    overflow:hidden;
+
+}
+
+
+
+
+
+.footer-brand{
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    justify-content:center;
+
+
+    gap:18px;
+
+
+
+    margin-bottom:45px;
+
+}
+
+
+
+.footer-brand .line{
+
+    flex:1;
+
+
+    max-width:120px;
+
+
+    height:1px;
+
+
+
+    background:
+    rgba(255,255,255,.18);
+
+}
+
+
+
+
+
+.footer-brand .brand-text{
+
+
+    font-family:
+    "Cormorant Garamond",
+    serif;
+
+
+
+    font-size:18px;
+
+
+
+    letter-spacing:2px;
+
+
+
+    color:
+    rgba(255,255,255,.92);
+
+
+
+    text-transform:uppercase;
+
+}
+
+
+
+
+
+.footer-grid{
+
+    display:grid;
+
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+
+    gap:50px;
+
+}
+
+
+
+
+.footer-title{
+
+    font-family:
+    "Cormorant Garamond",
+    serif;
+
+
+
+    font-size:30px;
+
+
+    margin-bottom:18px;
+
+}
+
+
+
+
+
+.footer-grid div{
+
+    line-height:1.9;
+
+}
+
+
+
+
+
+footer a{
+
+    color:
+    rgba(255,255,255,.9);
+
+
+
+    text-decoration:none;
+
+
+
+    transition:.25s;
+
+}
+
+
+
+
+footer a:hover{
+
+    color:#f6e3bf;
+
+
+    padding-left:4px;
+
+}
+
+
+
+
+
+.footer-bottom{
+
+
+    margin-top:45px;
+
+
+    padding-top:20px;
+
+
+    border-top:
+    1px solid
+    rgba(255,255,255,.15);
+
+
+
+    text-align:center;
+
+
+
+    color:
+    rgba(255,255,255,.65);
+
+
+
+    font-size:14px;
+
+}
+
+
+
 
 
 /* =========================================
    IMAGE VIEWER
 ========================================= */
 
+
 .image-viewer{
+
 
     position:fixed;
 
+
+
     inset:0;
 
-    background:rgba(0,0,0,.88);
+
+
+    background:
+    rgba(0,0,0,.88);
+
+
 
     display:flex;
 
+
+
     justify-content:center;
+
+
+
     align-items:center;
 
+
+
     opacity:0;
+
+
+
     visibility:hidden;
+
+
 
     transition:.25s;
 
+
+
     z-index:9999;
+
 }
+
+
+
 
 .image-viewer.show{
 
+
     opacity:1;
+
+
+
     visibility:visible;
+
 }
+
+
+
+
 
 .image-viewer img{
 
+
     max-width:92%;
+
+
+
     max-height:88%;
+
+
 
     border-radius:10px;
 
-    box-shadow:0 20px 60px rgba(0,0,0,.45);
+
+
+    box-shadow:
+    0 20px 60px rgba(0,0,0,.45);
+
+
 
     object-fit:contain;
+
 }
+
+
+
+
 
 .viewer-close{
 
+
     position:absolute;
 
+
+
     top:18px;
+
+
+
     right:24px;
+
+
 
     color:white;
 
+
+
     font-size:42px;
+
+
 
     cursor:pointer;
 
+
+
     user-select:none;
-}
 
-.review-photo img{
-
-    cursor:zoom-in;
-
-    transition:.25s;
-}
-
-.review-photo img:hover{
-
-    transform:scale(1.03);
 }
 
 
-.work-image img{
 
-    cursor:zoom-in;
+/* =========================================
+   MOBILE
+========================================= */
+
+
+@media(max-width:768px){
+
+
+/* =========================
+   HERO
+========================= */
+
+
+.hero{
+
+    height:500px;
+
 }
 
-.work-image img:hover{
 
-    transform:scale(1.02);
+
+.hero-cutout{
+
+    width:92%;
+
+    border-radius:
+    12px
+    12px
+    0
+    0;
+
+}
+
+
+
+.hero-content{
+
+    padding:
+    28px
+    22px
+    30px;
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    align-items:center;
+
+
+    justify-content:center;
+
+
+    text-align:center;
+
+}
+
+
+
+.logo{
+
+    margin-bottom:14px;
+
+}
+
+
+
+.logo img{
+
+    width:58px;
+
+}
+
+
+
+.hero h1{
+
+    font-size:42px;
+
+
+    line-height:.95;
+
+
+    margin-bottom:14px;
+
+}
+
+
+
+.hero p{
+
+    max-width:280px;
+
+
+    margin:
+    0
+    auto
+    22px;
+
+
+    font-size:16px;
+
+
+    line-height:1.55;
+
+}
+
+
+
+.contacts{
+
+    margin-top:18px;
+
+
+    font-size:14px;
+
+
+    text-align:center;
+
+}
+
+
+
+
+
+/* =========================
+   TITLES
+========================= */
+
+
+.section-title,
+.works-title{
+
+    font-size:34px;
+
+}
+
+
+
+
+
+/* =========================
+   SERVICES
+========================= */
+
+
+.services{
+
+    padding:
+    40px
+    0
+    50px;
+
+}
+
+
+
+.services-row{
+
+    gap:12px;
+
+}
+
+
+
+.service-tag{
+
+    width:155px;
+
+
+    height:82px;
+
+}
+
+
+
+.service-tag span{
+
+    padding:14px;
+
+
+    font-size:14px;
+
+
+    line-height:1.25;
+
+}
+
+
+
+.tag-hole{
+
+    width:10px;
+
+    height:10px;
+
+
+    right:14px;
+
+}
+
+
+
+
+
+/* =========================
+   WORKS
+========================= */
+
+
+.works{
+
+    padding:
+    55px
+    0;
+
+}
+
+
+
+.works-title{
+
+    margin-bottom:28px;
+
+}
+
+
+
+.work-grid{
+
+    grid-template-columns:1fr;
+
+
+    gap:18px;
+
+
+    max-width:340px;
+
+}
+
+
+
+.work-card::after{
+
+    inset:-8px;
+
+}
+
+
+
+.work-image{
+
+    height:190px;
+
+}
+
+
+
+
+
+/* =========================
+   REVIEWS
+========================= */
+
+
+.reviews{
+
+    padding:
+    55px
+    0;
+
+}
+
+
+
+.review-stack{
+
+    width:100%;
+
+
+    max-width:360px;
+
+
+    height:320px;
+
+}
+
+
+
+.review-card{
+
+    position:absolute;
+    width:620px;
+    min-height:340px;
+    height:auto;
+
+
+
+.review-card:nth-child(1),
+.review-card:nth-child(2),
+.review-card:nth-child(3){
+
+    left:0;
+
+
+    top:0;
+
+}
+
+
+
+.paper{
+
+    position:relative;
+
+    margin:18px 14px 14px;
+
+    min-height:290px;
+}
+
+.paper h3{
+
+    font-size:24px;
+
+}
+
+
+
+.paper p{
+
+    color:#555;
+
+    line-height:1.55;
+
+    margin-bottom:15px;
+
+
+    overflow:hidden;
+
+
+}
+
+
+
+.stamp{
+
+    right:14px;
+
+
+    top:14px;
+
+
+    padding:
+    5px
+    10px;
+
+
+    font-size:10px;
+
+}
+
+
+
+.folder-tab{
+
+    top:-28px;
+
+
+    height:28px;
+
+
+    padding:
+    0
+    14px;
+
+
+    font-size:12px;
+
+}
+
+
+
+.review-images{
+
+    gap:8px;
+
+
+    margin-top:12px;
+
+    flex-shrink:0;
+}
+
+
+
+.review-photo{
+
+    width:95px;
+
+
+    height:65px;
+
+
+    border-width:4px;
+
+}
+
+
+
+
+
+/* =========================
+   ADVANTAGES
+========================= */
+
+
+.advantages{
+
+    padding:
+    55px
+    0;
+
+}
+
+
+
+.advantages-grid{
+
+    grid-template-columns:1fr;
+
+
+    gap:18px;
+
+}
+
+
+
+.advantage-card{
+
+    padding:
+    48px
+    20px
+    22px;
+
+}
+
+
+
+.advantage-card h3{
+
+    font-size:26px;
+
+
+    text-align:center;
+
+}
+
+
+
+.advantage-card p{
+
+    text-align:center;
+
+
+    font-size:15px;
+
+}
+
+
+
+
+
+/* =========================
+   MAP
+========================= */
+
+
+.map-section{
+
+    padding:
+    40px
+    0
+    60px;
+
+}
+
+
+
+.map-card iframe{
+
+    height:300px;
+
+}
+
+
+
+.map-subtitle{
+
+    font-size:20px;
+
+}
+
+
+
+
+
+/* =========================
+   CONSULTATION
+========================= */
+
+
+.consultation{
+
+    padding:
+    55px
+    0
+    65px;
+
+}
+
+
+
+.consultation-card{
+
+    padding:
+    60px
+    22px
+    28px;
+
+}
+
+
+
+.consultation-card::before{
+
+    left:50%;
+
+
+    transform:
+    translateX(-50%);
+
+}
+
+
+
+.consultation-card h2{
+
+    font-size:34px;
+
+
+    line-height:1;
+
+}
+
+
+
+.consultation-card p{
+
+    font-size:15px;
+
+
+    line-height:1.7;
+
+}
+
+
+
+.consultation-buttons{
+
+    flex-direction:column;
+
+
+    align-items:center;
+
+
+    gap:12px;
+
+}
+
+
+
+.consultation-buttons .btn{
+
+
+    width:100%;
+
+
+    max-width:260px;
+
+}
+
+
+
+
+
+/* =========================
+   FOOTER
+========================= */
+
+
+footer{
+
+    padding:
+    45px
+    0
+    20px;
+
+}
+
+
+
+.footer-brand{
+
+    margin-bottom:28px;
+
+
+    gap:10px;
+
+}
+
+
+
+.footer-brand .line{
+
+    max-width:45px;
+
+}
+
+
+
+.footer-brand .brand-text{
+
+    font-size:13px;
+
+
+    text-align:center;
+
+
+    letter-spacing:1px;
+
+}
+
+
+
+.footer-grid{
+
+    grid-template-columns:1fr;
+
+
+    gap:26px;
+
+
+    text-align:center;
+
+}
+
+
+
+.footer-grid>div{
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    align-items:center;
+
+}
+
+
+
+.footer-title{
+
+    font-size:26px;
+
+}
+
+
+
+.footer-bottom{
+
+    margin-top:28px;
+
+
+    font-size:12px;
+
+
+    line-height:1.6;
+
+}
+
+
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+
+.btn{
+
+    width:100%;
+
+
+    max-width:250px;
+
+
+    padding:
+    14px
+    22px;
+
+}
+
+
+
+}
+
+
+
+
+/* =========================================
+   SMALL PHONES
+========================================= */
+
+
+@media(max-width:480px){
+
+
+.hero h1{
+
+    font-size:36px;
+
+}
+
+
+
+.hero p{
+
+    font-size:15px;
+
+}
+
+
+
+.section-title,
+.works-title{
+
+    font-size:30px;
+
+}
+
+
+
+.work-image{
+
+    height:180px;
+
+}
+
+
+}
+
+
 }
