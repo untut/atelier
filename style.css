@@ -2018,6 +2018,10 @@ footer a:hover{
     padding: 55px 0 100px;
 }
 
+.reviews .section-title {
+    margin-bottom: 45px;   /* ← вот это добавь */
+}
+
 .review-stack {
     position: relative;
     width: 100%;
@@ -2104,7 +2108,7 @@ footer a:hover{
     display: flex;
     justify-content: center;
     gap: 20px;
-    margin-top: 28px;
+    margin-top: 16px;
 }
 
 .review-controls button {
