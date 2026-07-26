@@ -243,32 +243,25 @@ function renderReviews(index){
 
 
 
-if(mobile){
+if (mobile) {
+    cards.forEach((card, i) => {
+        // Сбрасываем инлайновые стили, которые мог поставить десктоп
+        card.style.transform = "";
+        card.style.opacity = "1";
+        card.style.left = "0";
+        card.style.top = "";          // пусть работает CSS
 
-    cards.forEach((card,i)=>{
-
-        if(i === index){
-
+        if (i === index) {
             card.classList.add("active");
-            card.style.opacity = "1";
-            card.style.zIndex = "2";
-
-        }else{
-
+            card.style.zIndex = "20";
+        } else {
             card.classList.remove("active");
-            card.style.opacity = "0";
-            card.style.zIndex = "1";
-
+            // z-index оставляем из CSS (nth-child)
+            card.style.zIndex = "";
         }
-
-        card.style.transform = "none";
-
     });
-
     return;
-
 }
-
 
 
 
