@@ -2108,7 +2108,7 @@ footer a:hover{
     display: flex;
     justify-content: center;
     gap: 20px;
-    margin-top: 8px;
+    margin-top: 2px;
 }
 
 .review-controls button {
