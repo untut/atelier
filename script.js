@@ -243,64 +243,31 @@ function renderReviews(index){
 
 
 
-    if(mobile){
+if(mobile){
 
+    cards.forEach((card,i)=>{
 
-        const order=[];
+        if(i === index){
 
+            card.classList.add("active");
+            card.style.opacity = "1";
+            card.style.zIndex = "2";
 
-        order.push(cards[index]);
+        }else{
 
+            card.classList.remove("active");
+            card.style.opacity = "0";
+            card.style.zIndex = "1";
 
+        }
 
-        cards.forEach((card,i)=>{
+        card.style.transform = "none";
 
+    });
 
-            if(i!==index){
+    return;
 
-                order.push(card);
-
-            }
-
-
-        });
-
-
-
-        order.forEach((card,i)=>{
-
-
-            card.classList.toggle(
-                "active",
-                i===0
-            );
-
-
-
-            card.style.transform =
-            `
-            translateY(${i*50}px)
-            scale(${1-i*.04})
-            `;
-
-
-
-            card.style.zIndex =
-            100-i;
-
-
-
-            card.style.opacity = 1;
-
-
-
-        });
-
-
-
-        return;
-
-    }
+}
 
 
 
@@ -392,6 +359,38 @@ cards.forEach((card,index)=>{
 
 
 });
+
+
+const prev = document.querySelector(".review-prev");
+const next = document.querySelector(".review-next");
+
+if(prev && next){
+
+    prev.addEventListener("click",()=>{
+
+        activeIndex--;
+
+        if(activeIndex < 0){
+            activeIndex = cards.length - 1;
+        }
+
+        renderReviews(activeIndex);
+
+    });
+
+    next.addEventListener("click",()=>{
+
+        activeIndex++;
+
+        if(activeIndex >= cards.length){
+            activeIndex = 0;
+        }
+
+        renderReviews(activeIndex);
+
+    });
+
+}
 
 
 
