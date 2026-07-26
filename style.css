@@ -759,7 +759,7 @@ body::after{
 
 
 /* =========================
-   REVIEWS
+   REVIEWS (mobile)
 ========================= */
 
 .reviews {
@@ -770,35 +770,106 @@ body::after{
     position: relative;
     width: 100%;
     max-width: 340px;
-    height: 500px;          /* или auto, если хочешь по контенту */
+    height: 480px;          /* подгони под контент */
     margin: 0 auto;
 }
 
+/* Все карточки — стопка */
 .review-card {
     position: absolute;
-    top: 0 !important;      /* сбрасываем */
-    left: 0 !important;     /* сбрасываем */
+    top: 0;
+    left: 0;
     width: 100%;
     max-width: 340px;
     height: auto;
     transform: none !important;
-    opacity: 0;
+    opacity: 1;             /* все видны */
+    transition: transform 0.4s ease, box-shadow 0.3s ease;
 }
 
+/* Активная — сверху и чуть крупнее */
 .review-card.active {
-    opacity: 1;
+    z-index: 10 !important;
+    transform: scale(1.02) !important;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+/* Остальные чуть сдвинуты вниз (эффект стопки) */
+.review-card:nth-child(1) {
+    top: 0;
+    z-index: 3;
+}
+
+.review-card:nth-child(2) {
+    top: 18px;
     z-index: 2;
 }
 
-/* на всякий случай перекрываем nth-child */
-.review-card:nth-child(1),
-.review-card:nth-child(2),
 .review-card:nth-child(3) {
-    top: 0;
-    left: 0;
-    transform: none;
+    top: 36px;
+    z-index: 1;
 }
 
+/* Когда карточка активна — она всегда поверх */
+.review-card.active {
+    z-index: 20 !important;
+}
+
+/* Внутренности папки */
+.paper {
+    position: relative;
+    margin: 18px 14px 14px;
+    min-height: 280px;
+}
+
+.paper h3 {
+    font-size: 24px;
+}
+
+.stamp {
+    right: 14px;
+    top: 14px;
+    padding: 5px 10px;
+    font-size: 10px;
+}
+
+.folder-tab {
+    top: -28px;
+    height: 28px;
+    padding: 0 14px;
+    font-size: 12px;
+}
+
+.review-images {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+    flex-shrink: 0;
+}
+
+.review-photo {
+    width: 95px;
+    height: 65px;
+    border-width: 4px;
+}
+
+.review-controls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.review-controls button {
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 22px;
+    background: #d7c29d;
+    color: #3d3024;
+}
 
 
 
@@ -823,45 +894,6 @@ body::after{
 }
 
 
-
-
-.review-card:nth-child(1){
-
-    top:0;
-
-    left:0;
-
-    z-index:3;
-
-}
-
-
-
-.review-card:nth-child(2){
-
-    top:38px;
-
-    left:60px;
-
-    transform:rotate(-2deg);
-
-    z-index:2;
-
-}
-
-
-
-.review-card:nth-child(3){
-
-    top:76px;
-
-    left:120px;
-
-    transform:rotate(2deg);
-
-    z-index:1;
-
-}
 
 
 
@@ -911,19 +943,6 @@ body::after{
 
 
 
-.review-date{
-
-    color:var(--accent);
-
-    font-size:14px;
-
-    margin-bottom:18px;
-
-}
-
-
-
-
 .paper p{
 
     color:#555;
@@ -936,58 +955,6 @@ body::after{
 
 
 
-
-.review-images{
-
-    display:flex;
-
-    gap:14px;
-
-    margin-top:18px;
-
-}
-
-
-
-.review-photo{
-
-    width:150px;
-
-    height:95px;
-
-
-    background:#ddd;
-
-
-    border:
-    6px solid white;
-
-
-    overflow:hidden;
-
-
-    box-shadow:
-    0 4px 10px rgba(0,0,0,.12);
-
-}
-
-
-
-.review-photo img{
-
-    width:100%;
-
-    height:100%;
-
-
-    display:block;
-
-    object-fit:cover;
-
-
-    cursor:zoom-in;
-
-}
 
 
 
