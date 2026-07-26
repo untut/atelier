@@ -2203,12 +2203,12 @@ footer a:hover{
 
 .review-card{
 
-    position:absolute;
-    width:620px;
-    min-height:340px;
-    height:auto;
+   position: absolute;
+    width: 100%;
+    min-height: 340px;
+    height: auto;
 
-
+}
 
 .review-card:nth-child(1),
 .review-card:nth-child(2),
@@ -2673,4 +2673,3 @@ footer{
 }
 
 
-}
