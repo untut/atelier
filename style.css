@@ -2186,28 +2186,26 @@ footer a:hover{
 }
 
 
-
 .review-stack{
 
     width:100%;
+    max-width:340px;
 
+    height:420px;
 
-    max-width:360px;
-
-
-    height:320px;
-
+    margin:0 auto;
 }
 
 
 
 .review-card{
+    position: absolute;
 
-   position: absolute;
     width: 100%;
+    max-width: 340px;
+
     min-height: 340px;
     height: auto;
-
 }
 
 .review-card:nth-child(1),
