@@ -758,102 +758,45 @@ body::after{
 
 
 
-
-/* =========================================
+/* =========================
    REVIEWS
-========================================= */
+========================= */
 
-
-.reviews{
-
-    padding:80px 0 50px;
-
+.reviews {
+    padding: 55px 0 100px;
 }
 
-
-
-.review-stack{
-
-    position:relative;
-
-    width:760px;
-
-    height:420px;
-
-    margin:auto;
-
+.review-stack {
+    position: relative;
+    width: 100%;
+    max-width: 340px;
+    height: 500px;          /* или auto, если хочешь по контенту */
+    margin: 0 auto;
 }
 
-
-
-.review-card{
-
-    position:absolute;
-
-
-    width:620px;
-
-    height:380px;
-
-
-    background:#d7c29d;
-
-
-    border-radius:10px;
-
-
-    cursor:pointer;
-
-
-    transition:
-    transform .45s ease,
-    opacity .3s ease,
-    box-shadow .3s ease;
-
-
-    box-shadow:
-    0 18px 35px rgba(0,0,0,.15);
-
+.review-card {
+    position: absolute;
+    top: 0 !important;      /* сбрасываем */
+    left: 0 !important;     /* сбрасываем */
+    width: 100%;
+    max-width: 340px;
+    height: auto;
+    transform: none !important;
+    opacity: 0;
 }
 
+.review-card.active {
+    opacity: 1;
+    z-index: 2;
+}
 
-
-
-.folder-tab{
-
-    position:absolute;
-
-
-    top:-34px;
-
-    left:24px;
-
-
-    height:34px;
-
-
-    padding:0 24px;
-
-
-    display:flex;
-
-    align-items:center;
-
-
-    background:#c6ab82;
-
-
-    border-radius:
-    10px 10px 0 0;
-
-
-    font-weight:600;
-
-    font-size:15px;
-
-
-    color:#3d3024;
-
+/* на всякий случай перекрываем nth-child */
+.review-card:nth-child(1),
+.review-card:nth-child(2),
+.review-card:nth-child(3) {
+    top: 0;
+    left: 0;
+    transform: none;
 }
 
 
